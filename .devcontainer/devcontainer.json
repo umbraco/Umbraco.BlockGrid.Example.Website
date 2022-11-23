@@ -13,5 +13,19 @@
 		"ghcr.io/warrenbuckley/codespace-features/smtp4dev:0.7.0": {
 			"autorun": "true"
 		}
-    }
+	},
+	"portsAttributes": {
+		"5000": {
+			"label": "SMTP4Dev UI"
+		},
+		"41443": {
+			"label": "HTTP",
+			"protocol": "http"
+		},
+		"44355": {
+			"label": "HTTPS",
+			"protocol": "https",
+			"onAutoForward": "openPreview"
+		}
+	}
 }
