@@ -1,0 +1,17 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/alpine
+{
+	"name": "Umbraco Block Grid Codespace",
+	"image": "mcr.microsoft.com/devcontainers/base:latest",
+    "features": {
+        "ghcr.io/devcontainers/features/dotnet:1": {
+			"version": "7"
+		},
+
+		"ghcr.io/warrenbuckley/codespace-features/sqlite:latest": {},
+		
+		"ghcr.io/warrenbuckley/codespace-features/smtp4dev:0.7.0": {
+			"autorun": "true"
+		}
+    }
+}
