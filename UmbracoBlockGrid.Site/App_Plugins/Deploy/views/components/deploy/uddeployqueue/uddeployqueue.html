@@ -1,0 +1,84 @@
+<div>
+    
+    <div ng-if="items.length == 0">
+        <h4 class="bold">Transfer queue</h4>
+        <p>The queue is currently empty, everything has been transfered already - to add new items to the queue right click content in the tree on the left and select "queue for transfer"</p>
+
+        <umb-button
+            type="button"
+            button-style="outline"
+            action="refreshQueue()"
+            label="Refresh queue">
+        </umb-button>
+
+    </div>
+
+    <div ng-if="items.length > 0 && !loading">
+
+        <h4 class="bold">Transfer queue</h4>
+
+        <p><ng-pluralize
+            count="items.length"
+            when="{
+                '1': '1 change',
+                'other': '{} changes'}">
+        </ng-pluralize> queued for transfer to the <em>{{ targetName }}</em> workspace</p>
+
+        <div class="ud-queque">
+
+            <div ng-repeat="(entityType, items) in items | grpByEntityType">
+                
+                <h5 class="ud-queque__group-title umb-outline umb-outline--surrounding" ng-click="toggleEntityTypeItems(items)">{{getEntityName(entityType)}} ({{items.length}}) <i class="icon {{items.showItems ? 'icon-navigation-up' : 'icon-navigation-down'}}"></i></h5>
+                
+                <ul class="umb-deploy-item-list" ng-show="items.showItems">
+                    <li ng-repeat="item in items">
+                        <umb-node-preview
+                            class="ud-node-preview"
+                            name="item.Name"
+                            allow-remove="true"
+                            on-remove="removeFromQueue(item)"
+                            description="item.Description">
+                        </umb-node-preview>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div ng-show="false">
+            <p>Is local: {{isLocal}}</p>
+            <p>User: {{deployInfo.isDeveloper}}</p>
+            <label ng-show="!isLocal && deployInfo.isDeveloper">
+                <input style="margin-top: -3px;" type="checkbox" ng-model="deployInfo.doAutomaticSchemaTransfer" />
+                <span>Automatic transfer schema files</span>
+            </label>
+        </div>
+        <div class="flex items-center">
+
+            <umb-button
+                type="button"
+                button-style="success"
+                disabled="buttonState === 'busy'"
+                action="startDeploy()"
+                label="Transfer to {{ targetName }}"
+                state="deployButtonState">
+            </umb-button>
+
+            <umb-button
+                type="button"
+                button-style="outline"
+                action="refreshQueue()"
+                label="Refresh queue">
+            </umb-button>
+
+            <umb-button
+                type="button"
+                button-style="outline"
+                action="clearQueue()"
+                label="Clear queue">
+            </umb-button>
+
+        </div>
+
+    </div>
+
+</div>

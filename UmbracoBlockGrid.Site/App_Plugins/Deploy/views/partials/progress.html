@@ -1,0 +1,12 @@
+<div ng-controller="UmbracoDeploy.ProgressController as progressVm">
+
+    <h5>Transfering...</h5>
+    <p>Please hang on as items are collected and transfered to {{progressVm.deployConfiguration.targetName}}.</p>
+
+    <div class="progress progress-deploy">
+        <div class="bar" ng-style="{'width': progressVm.progress + '%'}"></div>
+    </div>
+
+    <small>{{progressVm.currentActivity}}</small>
+
+</div>

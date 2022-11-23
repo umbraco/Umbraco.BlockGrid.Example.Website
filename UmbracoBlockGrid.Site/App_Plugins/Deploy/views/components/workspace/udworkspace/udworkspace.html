@@ -1,0 +1,38 @@
+<button
+    class="btn-reset ud-workspace umb-outline"
+    ng-class="{ 'ud-workspace--active': active, 'ud-workspace--floating': type === 'inactive' }"
+    ng-click="onClick()">
+
+    <div class="ud-content-flow-arrow ud-content-flow-arrow--has-arrow ud-content-flow-arrow--to-next" ng-class="{ complete: deployProgress >= 100 }" ng-if="current && !isLast">
+        <div class="bar" ng-style="{ width: deployProgress + '%' }"></div>
+    </div>
+
+    <div style="position: relative; z-index: 1;">
+
+        <!-- Icon -->
+        <div class="ud-workspace__symbol" ng-switch="type" ng-class="{ 'ud-workspace__symbol--dashed': type === 'inactive' }">
+            <i ng-switch-when="local" class="ud-workspace__symbol-icon icon-pc"></i>
+            <i ng-switch-when="inactive" class="ud-workspace__symbol-icon icon-add"></i>
+            <i ng-switch-default class="ud-workspace__symbol-icon icon-globe-alt"></i>
+        </div>
+
+        <!-- Name -->
+        <h4 ng-if="type !== 'inactive'"><strong>{{ name }}</strong></h4>
+        <h4 ng-if="type === 'inactive'"><strong>Add..</strong></h4>
+
+        <!-- Description -->
+        <span class="ud-workspace__description" ng-switch="type" ng-if="!current">
+            <small ng-switch-when="local">Work locally</small>
+            <small ng-switch-when="inactive">Add a workspace</small>
+            <small ng-switch-default>{{ name }} workspace</small>
+        </span>
+
+        <span ng-if="current" class="ud-workspace__current">
+            <span>Current workspace</span>
+        </span>
+
+    </div>
+
+    <div ng-if="showDetailsArrow" class="ud-workspace__arrow"></div>
+
+</button>

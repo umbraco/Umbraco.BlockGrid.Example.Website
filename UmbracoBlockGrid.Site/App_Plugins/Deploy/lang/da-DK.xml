@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language>
+  <area alias="dashboardTabs">
+    <key alias="deploy">Arbejdsområder</key>
+  </area>
+  <area alias="general">
+    <key alias="Deploy">Deploy</key>
+    <key alias="restore">Genskab</key>
+  </area>
+  <area alias="sections">
+    <key alias="deploy">Deploy</key>
+    <key alias="deployOpenPortal">Åben portalen</key>
+    <key alias="deployHelpAndDocumentation">Hjælp og dokumentation</key>
+    <key alias="deployOpenQueue">Åben overførselskøen</key>
+    <key alias="deployGettingStarted">Kom godt igang</key>
+    <key alias="deploySetupProject">Opsæt dit projekt</key>
+    <key alias="deployDeployment">Lær om 'Deployment'</key>
+    <key alias="deployTroubleshooting">Fejlsøgning</key>
+  </area>
+  <area alias="actions">
+    <key alias="deployQueueForTransfer">Sæt i kø for overførsel</key>
+    <key alias="deployRestore">Genskab alt</key>
+    <key alias="deployPartialRestore">Udvalgt gendanelse</key>
+    <key alias="deployTransferNow">Overfør nu</key>
+  </area>
+  <area alias="actionDescriptions">
+    <key alias="deployQueueForTransfer">Tillad brugeren at sætte i overførselskøen</key>
+    <key alias="deployRestore">Tillad brugeren at genskabe sider</key>
+    <key alias="deployPartialRestore">Tillad brugeren at genskabe udvalgte sider</key>
+  </area>
+  <area alias="dialogs">
+    <key alias="deployTransferNowTitle">Overfør nu</key>
+    <key alias="deployTransferNowHeadline"><![CDATA[<h4 class="bold">Overfør <em>%0%</em> til %1%</h4>]]></key>
+    <key alias="deployTransferNowDescription"><![CDATA[<p>Du er ved at igangsætte overførsel af <em>%0%</em> direkte til %1%, uden at tilføje til køen.</p>]]></key>
+    <key alias="deployAddToQueueHeadline"><![CDATA[<h4 class="bold">Sæt <em>%0%</em> i køen for overførsel til <em>%1%</em></h4>]]></key>
+    <key alias="deployAddToQueueDescription"><![CDATA[<p>Denne handling sætter <em class="bold">%0%</em> i køen til næste overførsel, intet vil blive overført endnu.</p>]]></key>
+    <key alias="deployAddToQueueChildPageDescription"><![CDATA[<p>Skal alle underliggende sider af <em class="bold">%0%</em> inkluderes i denne overførsel?</p>]]></key>
+    <key alias="deployIncludeChildPages">Inkluder underliggende sider</key>
+    <key alias="deployAddToQueueDone"><![CDATA[<h5>Ændringer er lagt i køen</h5><p>Når du er klar til at overfører gå til <a href="#/content?dashboard=deploy">arbejdsområde siden</a> for at starte overførselen.</p>]]></key>
+
+    <key alias="deployRestoreFrom">Fra</key>
+    <key alias="deployRestoreWorkspace">arbejdsområde</key>
+    <key alias="deployRestoreThis">Genskab</key>
+    <key alias="deployRestoreIncludingDescendants">Inklusiv alle underliggende sider</key>
+    <key alias="deployRestoreNotIncludingDescendants">Uden underliggende sider</key>
+    <key alias="deployRestoreDescription">
+    <![CDATA[
+      <p>Dette inkludere rettelser til alt referred indhold og medier.</p>
+      <p style="margin-top: 15px; margin-bottom: 30px;"><strong>Bemærk:</strong> Genskabning af store mængder indhold kan tage langtid af udføre, undervejs bør du ikke ændre eller overfører indhold.</p>
+    ]]>
+    </key>
+    <key alias="deployRestorePickFrom">Eller vælg indhold fra</key>
+
+    <key alias="deployFullRestoreFrom">Genskab dette arbejdsområde fra</key>
+    <key alias="deployFullRestoreDescription">
+    <![CDATA[
+      <p>Denne handling vil overfører rettelser fra <em>%0%</em> til dette arbejdsmiljø. Dette inkludere rettelser til referred indhold og medier.</p>
+      <p style="margin-top: 15px; margin-bottom: 30px;">
+          <strong>Bemærk:</strong> Genskabning af store mængder indhold kan tage langtid af udføre, undervejs bør du ikke ændre eller overfører indhold.
+      </p>
+    ]]>
+    </key>
+    <key alias="deployFullRestoreAction">Genskab fra</key>
+    
+    <key alias="deployGoToTransferQueue">Åben overførselskøen</key>
+  </area>
+</language>

@@ -1,0 +1,80 @@
+<div>
+
+    <h4 class="bold">Start working with your website locally</h4>
+
+    <p>Make your changes locally and easily send them to UC. Choose how to work:</p>
+
+    <!-- Connection options -->
+    <div class="ud-connection-options">
+        <a href="" class="ud-connection-option" ng-class="{'ud-connection-option--active': visibleConnectionDetail === option.detailsAlias}" ng-click="showConnectionDetails(option.detailsAlias)" ng-repeat="option in connectionOptions">
+            <i class="ud-connection-option__icon {{ option.icon }}"></i>
+            <small class="bold">{{ option.name }}</small>
+        </a>
+    </div>
+
+    <div ng-switch="visibleConnectionDetail">
+
+        <!-- Visual Studio -->
+        <div ng-switch-when="vs">
+            <h4>Work locally with Visual Studio</h4>
+            <p>
+                For developers who use Visual Studio and Umbraco with code from external projects, we offer a setup script which will create
+                and configure a complete Visual Studio solution. The solution will use the git repository from Umbraco Cloud
+                making deployments as simple as pushing the changes from your local solution to the remote Umbraco Cloud environment.
+            </p>
+            <hr>
+            <a href="https://our.umbraco.com/documentation/Umbraco-Cloud/Set-Up/Working-With-Visual-Studio/" target="_blank" class="btn btn-link"><i class="icon icon-help-alt"></i>Get detailed instructions</a>
+        </div>
+
+        <!-- Grunt or Gulp -->
+        <div ng-switch-when="cli">
+            <h4>Work locally with Grunt or Gulp</h4>
+            <p> Umbraco Cloud provides a fast way to syncronise design changes, directly from your local machine. It works by running
+                a node.js command, which will connect to your remote website and start syncing file changes. For a fast view
+                on how your changes will be applied, a local browser window will show changes as they sync.</p>
+
+            <h4>1. Make an initial git clone of your site</h4>
+            <p> Use a git client like SourceTree or GitKraken to clone your UC workspace, using the git url below</p>
+
+            <p>
+                <pre>{{ gitUrl }}</pre>
+            </p>
+
+            <h4>2. Install the node.js module</h4>
+            <p>Run the below command in a terminal, to install the node.js module. This will make a command called 'uaas' available
+                in your terminal.</p>
+            <p>
+                <pre>npm install uaas-cli -g</pre>
+            </p>
+
+            <h4>3. Run the uaas command and sync changes</h4>
+            <p>Open a terminal in the root folder of your cloned website, then run the command:</p>
+            <p>
+                <pre>uaas watch</pre>
+            </p>
+            <p>Follow onscreen instructions to authenticate and start making changes to your local files - a browser window will
+                open and display changes as they are applied to your website.</p>
+
+            <hr />
+
+            <a href="https://our.umbraco.com/Documentation/Umbraco-Cloud/Set-Up/Working-With-Uaas-Cli/" target="_blank" class="btn btn-link"><i class="icon icon-help-alt"></i>Get detailed instructions</a>
+
+        </div>
+
+        <!-- Git -->
+        <div ng-switch-when="git">
+
+            <h4>Git Clone</h4>
+            <p>Use a git client like SourceTree or GitKraken to clone your UC workspace, using the git url below</p>
+            <p>
+                <pre>{{ gitUrl }}</pre>
+            </p>
+            <p>This will pull down all your website files to your local machine, you can now make local changes and push them back
+                to Umbraco Cloud when they are ready to go live, using nothing but a standard git client</p>
+            <hr>
+            <a href="https://our.umbraco.com/Documentation/Umbraco-Cloud/Set-Up/Working-Locally/" target="_blank" class="btn btn-link"><i class="icon icon-help-alt"></i>Get detailed git instructions</a>
+
+        </div>
+    </div>
+
+</div>

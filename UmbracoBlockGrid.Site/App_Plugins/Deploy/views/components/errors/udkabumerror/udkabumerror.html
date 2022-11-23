@@ -1,0 +1,22 @@
+<div class="ud-kabum-error">
+    <h4 class="bold color-red">Kabum! &#128163; &#128035;</h4>
+    <p>
+        This error was triggered by having this configuration setting in your <em>{{exception.EnvironmentName}}</em> environment,
+        and deploying a content item with a name ending with <code>&lt;value&gt;</code>&nbsp;:
+    </p>
+    <pre>
+        &lt;settings&gt;
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;deploy kabum=&quot;&lt;value&gt;&quot;&nbsp;/&gt;
+        &lt;/settings&gt;
+    </pre>
+    <p>
+        This is used for debugging exceptions &amp; errors and should normally not appear unless you are debugging something.
+        You can disable it by removing the "kabum" attribute from the UmbracoDeploy.settings.config file in ~/config of your site.
+    </p>
+    <div ng-if="exceptionUdis.length>0">
+        <p>The following artifacts might be involved:</p>
+        <ul ng-repeat="udi in exceptionUdis">
+            <li>{{udi}}</li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="fitted-container" display="relative" ng-controller="UmbracoDeploy.FlowController as flowVm">
+
+    <div class="workspaces-flow">
+
+        <div class="workspace local"
+             ng-class="{
+                            '-show-message': vm.activeWorkspace.type === 'local',
+                            '-active': vm.user.isLocalEnvironment,
+                            '-inactive': vm.user.seenConnection
+                           }">
+
+            <!-- there is always a arrow, when not deploying, this indicates direction and flow of deploys -->
+            <div class="flow-arrow" ng-hide="vm.workspaceMessage === 'deploy'"></div>
+
+
+            <!-- Local arrow, either steps once or twice, due to the add env step -->
+            <div class="flow-arrow" ng-class="{'-to-next': !vm.showAddEnvironment}"
+                 ng-if="vm.user.isLocalEnvironment && vm.workspaceMessage === 'deploy'">
+                <div class="bar" ng-style="{width: vm.currentTask !== null ? '0' : ((vm.currentTask.done / vm.currentTask.total) * 100) + '%' }"></div>
+
+            </div>
+
+            <a href ng-click="showLocalMessage($event)">
+
+                <div class="symbol">
+                    <i class="icon-pc"></i>
+                </div>
+
+                <h4><strong>Local</strong></h4>
+                <small ng-hide="vm.user.isLocalEnvironment">Work locally</small>
+
+                <span ng-if="vm.user.isLocalEnvironment" class="current-workspace">
+                    <ng-pluralize count="vm.editorChanges"
+                                  when="{'0': 'Current workspace',
+                                            '1': '1 change',
+                                            'other': '{} changes'}">
+                    </ng-pluralize>
+                </span>
+
+            </a>
+
+            <div class="workspace-arrow"></div>
+        </div>
+
+        <div class="workspace inactive" ng-if="vm.showAddEnvironment"
+             ng-class="{'-show-message': vm.activeWorkspace.type === 'add'}">
+
+            <a href ng-click="showAddMessage($event)">
+                <div class="symbol">
+                    <i class="icon-add"></i>
+                </div>
+                <h4>Add...</h4>
+                <small>Add a workspace</small>
+            </a>
+
+            <div class="workspace-arrow"></div>
+        </div>
+
+
+        <div class="workspace"
+             ng-class="{'-show-message': vm.activeWorkspace.type === workspace.type,
+                                '-active': workspace.current}"
+             ng-repeat="workspace in vm.environment.configured">
+
+            <!-- this can always only be onestep, so always to-next -->
+            <div class="flow-arrow -to-next"
+                 ng-if="workspace.current && vm.workspaceMessage === 'deploy' && showFlowArrow()">
+                <div class="bar" ng-style="{width: vm.currentTask !== null ? '0' : ((vm.currentTask.done / vm.currentTask.total) * 100) + '%' }"></div>
+            </div>
+
+            <a href ng-click="showWorkspaceMessage($event, workspace)">
+
+                <div class="symbol">
+                    <i class="icon-globe-alt"></i>
+                </div>
+                <h4><strong>{{workspace.name}}</strong></h4>
+
+                <small ng-hide="workspace.current">{{workspace.name}} Workspace</small>
+
+                <span ng-if="workspace.current" class="current-workspace">
+                    <ng-pluralize count="vm.editorChanges"
+                                  when="{'0': 'Current workspace',
+                                                '1': '1 change',
+                                                'other': '{} changes'}">
+                    </ng-pluralize>
+                </span>
+            </a>
+
+            <div class="workspace-arrow"></div>
+        </div>
+
+    </div>
+</div>

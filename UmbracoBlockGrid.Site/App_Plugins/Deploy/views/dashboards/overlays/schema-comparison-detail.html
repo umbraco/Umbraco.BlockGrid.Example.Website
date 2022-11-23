@@ -1,0 +1,40 @@
+<div class="umb-dialog" ng-controller="UmbracoDeploy.SchemaComparisonDetailController as vm">
+
+    <div class="umb-dialog-body">
+
+        <umb-load-indicator ng-show="vm.loading"></umb-load-indicator>
+
+        <div class="umb-pane" ng-cloak ng-show="!vm.loading">
+
+            <h4>{{vm.title}}</h4>
+
+            <h5>{{vm.subtitle}}</h5>
+
+            <p ng-if="!vm.comparableContentFound">{{vm.nonComparableContentMessage}}</p>
+
+            <div class="umb-deploy-compare-diff">
+                <div class="umb-deploy-compare-diff-explain" ng-if="vm.comparableContentFound" >
+                    <p>This shows the differences between the representation of the entity stored in Umbraco and in the .uda file on disk.</p>
+                    <p>If an extraction is triggered, <del>red information</del> will be removed after the operation completes and <ins>green text</ins> will be added.</p>
+                </div>
+
+                <div class="pre schema-comparison-diff" ng-if="vm.comparableContentFound"><!--
+                    --><span ng-repeat="part in vm.artifactDiff track by $id(part)"><!--
+                        --><ins ng-if="part.added">{{part.value}}</ins><!--
+                        --><del ng-if="part.removed">{{part.value}}</del><!--
+                        --><span ng-if="!part.added && !part.removed">{{part.value}}</span><!--
+                    --></span>
+                </div>
+
+                <div class="pre" ng-if="!vm.comparableContentFound">{{vm.singleArtifactDisplay}}</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="umb-dialog-footer btn-toolbar umb-btn-toolbar">
+        <button type="button" class="btn btn-link" ng-click="vm.close()">
+            <localize key="general_close">Close</localize>
+        </button>
+    </div>
+</div>

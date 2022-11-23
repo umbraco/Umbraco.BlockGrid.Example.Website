@@ -1,0 +1,12 @@
+<div>
+
+    <h4 class="bold">Transferring...</h4>
+    <p>Please hang on as items are collected and transferred to {{ targetName }}</p>
+    
+    <umb-progress-bar
+        percentage="{{ progress }}">
+    </umb-progress-bar>
+
+    <small><span ng-if="timestamp">{{ timestamp }}:</span> {{ currentActivity }}</small>
+
+</div>

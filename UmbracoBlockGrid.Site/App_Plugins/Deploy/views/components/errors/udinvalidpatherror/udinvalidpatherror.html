@@ -1,0 +1,14 @@
+<div class="ud-invalid-path-error">
+    <h4 class="bold color-red">Invalid Path in data</h4>
+    <p>
+        During the deploy process, an invalid path was found in the database.
+        This can be fixed by updating the paths in <em>umbracoNode</em> to be correct.
+        Please contact support for instructions on how to solve this issue.
+    </p>
+    <div ng-if="exceptionUdis.length > 0">
+        <p>The following artifacts might be involved:</p>
+        <ul ng-repeat="udi in exceptionUdis">
+            <li>{{udi}}</li>
+        </ul>
+    </div>
+</div>

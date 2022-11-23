@@ -1,0 +1,16 @@
+{
+  "javascript": [
+    "~/App_Plugins/Deploy/lib/signalr/signalr.min.js",
+    "~/umbraco/backoffice/signalr/hubs",
+    "~/App_Plugins/Deploy/js/deploy.modules.js",
+    "~/App_Plugins/Deploy/js/deploy.controllers.js",
+    "~/App_Plugins/Deploy/js/deploy.resources.js",
+    "~/App_Plugins/Deploy/js/deploy.services.js",
+    "~/App_Plugins/Deploy/js/deploy.filters.js",
+    "~/App_Plugins/Deploy/js/deploy.components.js",
+    "~/App_Plugins/Deploy/js/deploy.decorators.js"
+  ],
+  "css": [
+    "~/App_Plugins/Deploy/assets/css/deploy.css"
+  ]
+}

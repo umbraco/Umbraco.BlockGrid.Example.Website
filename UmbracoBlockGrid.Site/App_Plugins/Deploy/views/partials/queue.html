@@ -1,0 +1,49 @@
+<div ng-controller="UmbracoDeploy.QueueController as queueVm">
+    <h4 class="umb-infobox-title">Restore From Source</h4>
+    <p>
+        Click to start restoring from {{queueVm.deployConfiguration.targetName}}.
+    </p>
+    <button ng-click="queueVm.restore()">Restore</button>
+
+    <div ng-if="queueVm.items.length == 0">
+        <h4 class="umb-infobox-title">Deploy To Target - no pending items</h4>
+        <p>
+            The queue is currently empty. To add items to the queue, right-click them in the tree on the left and select "queue for transfer".
+        </p>
+        <button ng-click="queueVm.refreshQueue()">Refresh</button>
+    </div>
+
+    <div ng-if="queueVm.items.length > 0 && !vm.loading">
+        <h4 class="umb-infobox-title">Deploy To Target - 
+            <ng-pluralize count="queueVm.items.length"
+                          when="{
+                          '1': '1 item queued for ',
+                          'other': '{} items queued for '}">
+            </ng-pluralize>{{queueVm.deployConfiguration.targetName}}
+        </h4>
+        <p>Items have been queued for transfer, these items can be transfered directly from here.</p>
+
+        <div ng-repeat="(entityType, items) in queueVm.items | grpByEntityType">
+            <h4>{{getEntityName(entityType)}} ({{items.length}})</h4>
+            <ul class="umb-deploy-item-list">
+                <li ng-repeat="item in limitedItems = (items | limitTo:queueVm.limitToItemAmount)">
+                    <i class="icon-check"></i> {{item.Name}}
+                    <a href="#" prevent-default ng-click="queueVm.removeFromQueue(item)"><i class="icon icon-delete"></i></a>
+                    <small class="umb-deploy-include-children" ng-if="item.IncludeDescendants">Including all items below it</small>
+                </li>
+                <li class="umb-deploy-item-list-more" ng-if="items.length > queueVm.limitToItemAmount" ng-init="queueVm.showExpandLink = true">...</li>
+            </ul>
+        </div>
+        <div>
+            <a href="#" ng-if="queueVm.showExpandLink" prevent-default ng-click="queueVm.limitToItemAmount = 9999999">
+                <i class="icon-navigation-vertical"></i> See all items...
+            </a>
+        </div>
+
+        <button ng-click="queueVm.startDeploy()" prevent-default="">Send items to {{queueVm.deployConfiguration.targetName}}</button>
+
+        <button ng-click="queueVm.clearQueue()">Clear queue</button>
+
+        <button ng-click="queueVm.refreshQueue()">Refresh</button>
+    </div>
+</div>

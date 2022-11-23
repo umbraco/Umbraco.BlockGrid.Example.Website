@@ -1,0 +1,38 @@
+<div class="ud-schema-mismatch-error">
+    <div ng-if="feedbackMessageLevel === 'Developer'">
+        <h4 class="bold color-red">Schema mismatch {{ test }}</h4>
+        <p>While trying to transfer, we found schema mismatches between your environments. To be able to transfer content,
+            first make sure you have deployed all pending schema changes in the portal.</p>
+        <p>For more information on how to resolve schema mismatch errors, please refer to the documentation on how to
+            <a class="underline" target="_black" href="https://our.umbraco.org/documentation/Umbraco-Cloud/Troubleshooting/Content-Deploy-Schema/">troubleshoot schema errors on Umbraco Cloud</a>.</p>
+        <p>The following items are causing problems:</p>
+        <div ng-repeat="mismatch in exception.Mismatches" class="ud-schema-mismatch-error__group">
+            <div class="ud-schema-mismatch-error__title">
+                {{prettyEntityType(mismatch.Udi)}} <strong>{{mismatch.Name}}</strong>
+                <span ng-if="mismatch.Alias">with alias '{{mismatch.Alias}}'</span><br/>
+                <small>{{mismatch.Udi}}</small>
+            </div>
+            <ul class="ud-schema-mismatch-error__difference-group">
+                <li ng-repeat="diff in mismatch.Differences" class="ud-schema-mismatch-error__difference">
+                    {{diff.Title}}
+                    <span ng-if="diff.Category">({{diff.Category}})</span>
+                    <span ng-if="diff.Text" class="ud-schema-mismatch-error__difference-text">: {{diff.Text}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div ng-if="feedbackMessageLevel !== 'Developer'">
+        <h4 class="bold">Sorry, the content can not be transferred because the target is missing template files</h4>
+        <p>
+            Please contact your technical support to resolve the issue.
+        </p>
+        <p>
+            The following content you are trying to transfer are missing template files on target environment:
+        </p>
+        <ul class="ud-schema-mismatch-error__group">
+            <li ng-repeat="contentName in contentItems"  class="ud-schema-mismatch-error__title">
+                {{contentName}}
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="ud-schema-mismatch-error">
+    <h3 ng-show="false">Your message level {{feedbackMessageLevel}}</h3>
+    <h4 class="bold color-red">Schema mismatch</h4>
+    <div ng-if="!noNodes">
+        <p>While trying to restore, we found schema mismatches between your environments. To be able to restore content,
+            first make sure you have deployed all pending schema changes between your environments in the portal.</p>
+        <p>If you are still experiencing problems, please refer to the documentation on how to
+            <a class="underline" href="https://our.umbraco.org/documentation/Umbraco-Cloud/Troubleshooting/Content-Deploy-Schema/">troubleshoot schema errors on Umbraco Cloud</a>.</p>
+    </div>
+    <div ng-if="noNodes">
+        <p>While trying to restore, we found schema mismatches between your environments. To be able to restore content,
+            first make sure you have pulled and applied all pending schema changes via git before trying to restore.</p>
+        <p>If you are still experiencing problems, please refer to the documentation on how to
+            <a class="underline" href="https://our.umbraco.org/documentation/Umbraco-Cloud/Troubleshooting/Content-Deploy-Schema/Local/">troubleshoot schema errors on Umbraco Cloud</a>.</p>
+    </div>
+    <p>The following items are causing problems:</p>
+    <div ng-repeat="mismatch in exception.Mismatches" class="ud-schema-mismatch-error__group">
+        <div class="ud-schema-mismatch-error__title">
+            {{prettyEntityType(mismatch.Udi)}} <strong>{{mismatch.Name}}</strong>
+            <span ng-if="mismatch.Alias">with alias '{{mismatch.Alias}}'</span><br/>
+            <small>{{mismatch.Udi}}</small>
+        </div>
+        <ul class="ud-schema-mismatch-error__difference-group">
+            <li ng-repeat="diff in mismatch.Differences" class="ud-schema-mismatch-error__difference">
+                {{diff.Title}}
+                <span ng-if="diff.Category">({{diff.Category}})</span>
+                <span ng-if="diff.Text" class="ud-schema-mismatch-error__difference-text">: {{diff.Text}}</span>
+            </li>
+        </ul>
+    </div>
+</div>

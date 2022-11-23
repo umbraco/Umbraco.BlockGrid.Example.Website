@@ -1,0 +1,27 @@
+<div>
+    <h4 class="bold">Transfer complete</h4>
+    <p>
+        Everything was packaged and sent to the {{ targetName }} workspace at 
+        <a target="_blank" href="{{ targetUrl }}">{{ targetUrl }}</a>
+    </p>
+    <div ng-if="isSchemaFiles">
+        <h5>Deploy transferred the following schema files:</h5>
+        <ul class="ud-schema-mismatch-error__group">
+            <li ng-repeat="file in schemaFiles" >
+                {{file.Name}} ({{file.Type}})
+            </li>
+        </ul>   
+    </div>
+
+    <p>
+        <small><strong>Time:</strong> {{ timestamp }}</small>
+    </p>
+
+    <umb-button
+        type="button"
+        button-style="outline"
+        action="onBack()"
+        label-key="dialogs_deployGoToTransferQueue">
+    </umb-button>
+
+</div>

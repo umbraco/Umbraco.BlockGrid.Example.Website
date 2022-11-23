@@ -1,0 +1,9 @@
+<div ng-controller="UmbracoDeploy.DoneController as doneVm">
+    <h5>Transfer complete</h5>
+    <p>
+        Everything was packaged and sent to the {{doneVm.targetName}} workspace at
+        <a target="_blank" href="{{doneVm.targetUrl}}">{{doneVm.targetUrl}}</a>
+    </p>
+
+    <button class="umb-era-button -blue" prevent-default ng-click="doneVm.ok()">Okay</button>
+</div>

@@ -1,0 +1,30 @@
+<div class="ud-schema-mismatch-error">
+    <h3>Your message level {{feedbackMessageLevel}}</h3>
+    <h4 class="bold color-red">Collisions detected</h4>
+    <div ng-if="operation==='restore'">
+        <p>Some of the Deploy (uda) files that exist in your repository in ~/data/revision, and represent your project's schema items
+            such as data types or document types, are colliding. This means that you have e.g. two files defining items with
+            different unique identifiers (udi) but with colliding unique properties (e.g. alias).</p>
+        <p>This can occur if two developers have created the same schema item, and both of them commit and merge/push these changes
+            to the Git repository. For example, this can create two files, each trying to define content type "myContentType" but
+            with a different unique identifier (udi).</p>
+        <p>You will need to cleanup/remove one of the colliding files. The <em>technical details</em> below will provide you with
+            more details on which files are causing issues. In addition, you can refer to the
+            <a href="https://our.umbraco.org/documentation/Umbraco-Cloud/Troubleshooting/Structure-Error/#error-in-courier-files-containing-site-structure" 
+            target="_blank">online documentation</a> for more help.</p>
+    </div>
+    <div ng-if="operation==='deploy'">
+        <p>Some of the items you are deploying collide with existing items on the remote site. This means that you are e.g. deploying
+            an item with a unique property (e.g. alias) that has been created on remote with that same property, and therefore
+            already exists there, but with a different unique identifier (udi).</p>
+        <p>This can occur if the same item is created manually on both source and target.</p>
+        <p>You will need to fix the situation before deploying. The <em>technical details</em> below will provide you with
+            more details on which items are causing issues. And then you will need fix the unique identifiers in the database.</p>
+    </div>
+    <div ng-if="exceptionUdis.length>0">
+        <p>The following artifacts might be involved:</p>
+        <ul ng-repeat="udi in exceptionUdis">
+            <li>{{udi}}</li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="ud-chunkedencoding-error">
+    <h4 class="bold color-red">Unable to open session</h4>
+    <p>Deploy was unable to open a session to the remote environment due to a problem with chunked transfer encoding.</p>
+    <p>
+        Chunked transfer encoding is incompatible with Deploy and is usually caused by using an upgraded version
+        of the <em>System.Net.Http</em> assembly in your project.
+    </p>
+    <p>
+        Please ensure that your assembly redirect bindings for <em>System.Net.Http</em> are set to version <em>4.0.0.0</em>
+        in the <em>Web.config</em> of all of your environments.
+    </p>
+</div>

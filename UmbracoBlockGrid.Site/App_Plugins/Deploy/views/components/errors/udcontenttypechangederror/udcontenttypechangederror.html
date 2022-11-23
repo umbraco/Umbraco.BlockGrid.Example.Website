@@ -1,0 +1,18 @@
+<div class="ud-content-type-changed-error">
+    <h4 class="bold color-red">Unsupported content type change</h4>
+    <p>
+        The content type of a document or media you are trying to transfer, has changed. This means that the item exists
+        on both sites, but with a different content type. Deploying content type changes is currently not supported by
+        Umbraco Deploy.
+    </p>
+    <p>
+        If you want to transfer this document, you need to delete the existing document in the destination site and
+        redeploy it from the source site using the new document type.
+    </p>
+    <div ng-if="exceptionUdis.length > 0">
+        <p>The following artifacts might be involved:</p>
+        <ul ng-repeat="udi in exceptionUdis">
+            <li>{{udi}}</li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="span6">
+        <h4 class="bold">View website</h4>
+        <p>Open the website or Umbraco backoffice in a new window</p>
+
+        <ul class="unstyled">
+            <li>
+                <a class="btn btn-link" target="_blank" ng-href="{{ websiteUrl }}">
+                    <i class="icon-layout"></i> View website
+                </a>
+            </li>
+            <li>
+                <a class="btn btn-link" target="_blank" ng-href="{{ umbracoUrl }}">
+                    <i class="icon-settings-alt"></i> Open umbraco backoffice
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="span6" ng-if="allowManageWorkspaces">
+        <h4 class="bold">Manage Workspace</h4>
+        <p>Manage workspace settings on umbraco.io, there you can invite team members, assign hostnames, adjust security and</p>
+        <ul class="unstyled">
+            <li>
+                <a class="btn btn-link" target="_blank" ng-href="{{ projectUrl }}">
+                    <i class="icon-umb-deploy"></i> Open {{ projectName }} on Umbraco.io
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

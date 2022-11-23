@@ -1,0 +1,117 @@
+<div>
+    <div ng-if="status === 'failed'">
+        <div ng-switch="innerException.Type">
+            <ud-collision-error
+                ng-switch-when="Umbraco.Deploy.Infrastructure.Exceptions.ArtifactCollisionException"
+                operation="operation"
+                exception-udis="exceptionUdis"
+                exception="innerException"
+                feedback-message-level="feedbackMessageLevel">
+            </ud-collision-error>
+            <ud-deploy-schema-mismatch-error
+                ng-switch-when="Umbraco.Deploy.Core.Exceptions.DeploySchemaMismatchException"
+                exception="innerException"
+                feedback-message-level="feedbackMessageLevel">
+            </ud-deploy-schema-mismatch-error>
+            <ud-restore-schema-mismatch-error
+                ng-switch-when="Umbraco.Deploy.Core.Exceptions.RestoreSchemaMismatchException"
+                exception="innerException"
+                no-nodes="noNodes"
+                feedback-message-level="feedbackMessageLevel">
+            </ud-restore-schema-mismatch-error>
+            <ud-unauthorized-client-error
+                ng-switch-when="Umbraco.Deploy.Core.Exceptions.UnauthorizedClientException">             
+            </ud-unauthorized-client-error>
+            <ud-kabum-error
+                ng-switch-when="Umbraco.Deploy.Core.Exceptions.KabumException"
+                exception="innerException"
+                exception-udis="exceptionUdis">
+            </ud-kabum-error>
+            <ud-content-type-changed-error
+                ng-switch-when="Umbraco.Deploy.Core.Exceptions.ContentTypeChangedException"
+                exception-udis="exceptionUdis">
+            </ud-content-type-changed-error>
+            <ud-dependency-error
+                ng-switch-when="Umbraco.Deploy.Core.Exceptions.AggregateDependencyException"
+                exception="exception.Error.Extensions || exception"
+                feedback-message-level="feedbackMessageLevel">
+            </ud-dependency-error>
+            <ud-busy-error
+                ng-switch-when="Umbraco.Deploy.Core.Exceptions.EnvironmentBusyException"
+                exception="exception"
+                feedback-message-level="feedbackMessageLevel">
+            </ud-busy-error>
+            <ud-chunk-decoding-error
+                ng-switch-when="Umbraco.Deploy.Core.Exceptions.ChunkedEncodingException"
+                feedback-message-level="feedbackMessageLevel">
+            </ud-chunk-decoding-error>
+            <ud-web-exception-error ng-switch-when="System.Net.WebException"
+                exception="innerException"
+                feedback-message-level="feedbackMessageLevel">
+            </ud-web-exception-error>
+            <ud-invalid-path-error
+                ng-switch-when="Umbraco.Deploy.Core.Exceptions.InvalidPathException"
+                exceptionUdis="exceptionUdis"
+                feedback-message-level="feedbackMessageLevel">
+            </ud-invalid-path-error>
+            <ud-merge-conflict-error
+                ng-switch-when="Umbraco.Deploy.Core.Exceptions.MergeConflictException"
+                exception="exception"
+                feedback-message-level="feedbackMessageLevel">
+            </ud-merge-conflict-error>
+            <div ng-switch-default>
+                <h4 class="bold color-red">An error occurred</h4>
+                <p>
+                    The {{exception.EnvironmentName || 'source'
+            }} environment has thrown a
+            <em>{{exception.Type || 'unknown exception'}}</em> with message:
+            <em>{{exception.Detail || '(empty)'}}</em>
+            <span ng-if="innerException !== exception">
+                It might have been caused by an inner <em>{{innerException.Type}}</em> with message:
+                <em>{{innerException.Detail || '(empty)'}}</em>
+            </span>
+            </p>
+            <div ng-if="exceptionUdis.length>0">
+                <p>The following artifacts might be involved:</p>
+                <ul ng-repeat="udi in exceptionUdis">
+                    <li>{{udi}}</li>
+                </ul>
+            </div>
+            <p>The <em>technical details</em> may contain more information.</p>
+        </div>
+        </div>
+    </div>
+
+    <div ng-if="status === 'cancelled'">
+        <h4 class="bold">Task was cancelled</h4>
+        <p>The task was cancelled during execution.</p>
+    </div>
+
+    <div ng-if="status === 'timedOut'">
+        <h4 class="bold">Task timed out</h4>
+        <p>The task timed out.</p>
+    </div>
+
+    <p>
+        <small><strong>Time:</strong> {{ timestamp }}</small>
+        <span ng-if="showDebug">
+            <br/>
+            <small><strong>Server Time:</strong> {{ serverTimestamp }}</small>
+        </span>
+    </p>
+
+    <umb-button
+        type="button"
+        button-style="outline"
+        action="onBack()"
+        label-key="close">
+    </umb-button>
+
+    <umb-button
+        ng-if="feedbackMessageLevel === 'Developer'"
+        type="button"
+        button-style="link"
+        action="onDebug()"
+        label="View technical details">
+    </umb-button>
+</div>
