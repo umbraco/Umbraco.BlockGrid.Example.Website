@@ -14,6 +14,7 @@
 			"autorun": "true"
 		}
 	},
+	"forwardPorts": [5000],
 	"portsAttributes": {
 		"5000": {
 			"label": "SMTP4Dev UI"
@@ -25,7 +26,7 @@
 		"44355": {
 			"label": "HTTPS",
 			"protocol": "https",
-			"onAutoForward": "openPreview"
+			"onAutoForward": "openBrowser"
 		}
 	}
 }
