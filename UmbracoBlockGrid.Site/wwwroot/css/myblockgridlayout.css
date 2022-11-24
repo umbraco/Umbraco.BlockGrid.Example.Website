@@ -110,25 +110,9 @@ h2 {
     color: var(--my-text-color, inherit);
 }
 
-/**umb_name:H3*/
-h3 {
-    font-size: 30px;
-    font-weight: 300;
-    line-height: 1.2;
-    margin:0;
-    text-align: var(--my-text-align, left);
-    color: var(--my-text-color, inherit);
-}
 
-/**umb_name:H4*/
-h4 {
-    font-size: 21px;
-    font-weight: 300;
-    line-height: 1.2;
-    margin:0;
-    text-align: var(--my-text-align, left);
-    color: var(--my-text-color, inherit);
-}
+
+
 
 
 /** Rich Text */
@@ -145,10 +129,7 @@ h4 {
     margin-top:0;
 }
 
-/**umb_name:Lead Paragraph*/
-p.lead-paragraph {
-    font-size: 18px;
-}
+
 
 
 
@@ -294,4 +275,29 @@ section.diversity {
 }
 .card.--medium .card-content h4 {
     font-size: 30px;
+}
+
+/**umb_name:H3*/
+h3 {
+	font-size: 30px;
+	font-weight: 300;
+	line-height: 1.2;
+	margin:0;
+	text-align: var(--my-text-align, left);
+	color: var(--my-text-color, inherit);
+}
+
+/**umb_name:H4*/
+h4 {
+	font-size: 21px;
+	font-weight: 300;
+	line-height: 1.2;
+	margin:0;
+	text-align: var(--my-text-align, left);
+	color: var(--my-text-color, inherit);
+}
+
+/**umb_name:Lead Paragraph*/
+p.lead-paragraph {
+	font-size: 18px;
 }

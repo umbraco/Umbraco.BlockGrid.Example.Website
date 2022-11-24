@@ -1,0 +1,9 @@
+<style>
+    :host {
+        cursor: pointer;
+        user-select: none;
+    }
+</style>
+<h1 ng-if="block.data.size[0] === 'H1'" ng-click="block.edit()" ng-focus="block.focus">{{block.data.headline}}</h1>
+<h2 ng-if="block.data.size[0] === 'H2'" ng-click="block.edit()" ng-focus="block.focus">{{block.data.headline}}</h2>
+<h3 ng-if="block.data.size[0] === 'H3'" ng-click="block.edit()" ng-focus="block.focus">{{block.data.headline}}</h3>
