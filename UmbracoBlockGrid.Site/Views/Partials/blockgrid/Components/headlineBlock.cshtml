@@ -4,7 +4,7 @@
 
 @{
     var content = (ContentModels.HeadlineBlock)Model.Content;
-    var headerSize = string.IsNullOrWhiteSpace(content.Size) ? "H1" : content.Size;
+    var headerSize = string.IsNullOrWhiteSpace(content.Size) ? "H4" : content.Size;
 }
 
 @Html.Raw($"<{headerSize}>")@Model.Content.Value("headline")@Html.Raw($"</{headerSize}>")

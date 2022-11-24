@@ -1,0 +1,11 @@
+﻿@using Umbraco.Extensions
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@{
+    var href = Model.Content.Value<IPublishedContent>("link")?.Url();
+    if (href.IsNullOrWhiteSpace())
+    {
+        return;
+    }
+}
+
+<a class="call-to-action" href='@href' target="_self">@Model.Content.Value("label")</a>
