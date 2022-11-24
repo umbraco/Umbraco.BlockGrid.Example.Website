@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ContentTargetFolders>.</ContentTargetFolders>
+    <Product>UmbracoBlockGrid</Product>
+    <PackageId>UmbracoBlockGrid</PackageId>
+    <Title>Umbraco Block Grid Example Website</Title>
+    <Description>A simple Umbraco starter kit to show off the new Umbraco Block Grid editor</Description>
+    <PackageTags>umbraco;umbraco-marketplace;starter-kit;blockgrid;block-grid; </PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="10.3.2" />
+    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="10.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="App_Plugins\UmbracoBlockGrid\**" ExcludeFromSingleFile="true" CopyToPublishDirectory="Always" />
+    <None Include="buildTransitive\**" Pack="true" PackagePath="buildTransitive" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="App_Plugins\UmbracoBlockGrid\heroblock.editor.controller.js" />
+    <Content Remove="App_Plugins\UmbracoBlockGrid\mediablock.editor.controller.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="package.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="package.zip" />
+  </ItemGroup>
+</Project>

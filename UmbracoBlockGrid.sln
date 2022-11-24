@@ -3,20 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbracoBlockGrid.Site", "UmbracoBlockGrid.Site\UmbracoBlockGrid.Site.csproj", "{4B8232EE-F7C7-4651-9CA9-FA66B531D92D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbracoBlockGrid.Site", "UmbracoBlockGrid.Site\UmbracoBlockGrid.Site.csproj", "{4B8232EE-F7C7-4651-9CA9-FA66B531D92D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbracoBlockGrid", "UmbracoBlockGrid\UmbracoBlockGrid.csproj", "{E5473372-F10E-4704-A40D-29A3B6552878}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{4B8232EE-F7C7-4651-9CA9-FA66B531D92D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4B8232EE-F7C7-4651-9CA9-FA66B531D92D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B8232EE-F7C7-4651-9CA9-FA66B531D92D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B8232EE-F7C7-4651-9CA9-FA66B531D92D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5473372-F10E-4704-A40D-29A3B6552878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5473372-F10E-4704-A40D-29A3B6552878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5473372-F10E-4704-A40D-29A3B6552878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5473372-F10E-4704-A40D-29A3B6552878}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9937B96B-AE04-4EA0-9694-B0FBC6B3287C}
 	EndGlobalSection
 EndGlobal
