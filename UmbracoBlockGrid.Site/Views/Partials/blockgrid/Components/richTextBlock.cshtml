@@ -5,4 +5,4 @@
     var content = (ContentModels.RichTextBlock)Model.Content;
 }
 
-<div class="rich-text">@content.RichText</div>
+<div class="rich-text @(Model.ColumnSpan == 12 ? "--two-columns" : null)">@content.RichText</div>

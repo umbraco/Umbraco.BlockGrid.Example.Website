@@ -120,16 +120,17 @@ h2 {
 .rich-text {
     font-weight: 300;
     text-align: var(--my-text-align, left);
-    color: var(--my-text-color, inherit);
-    columns: var(--my-text-columns, 1);
-    column-gap: 60px;
+    color: var(--my-text-color, inherit);   
 }
 
 .rich-text > p:first-child {
     margin-top:0;
 }
 
-
+.rich-text.--two-columns {
+    columns: 2;
+    column-gap: 60px;
+}
 
 
 

@@ -13,16 +13,16 @@
 
 </style>
 
-<button 
-    class="card"
-    ng-class="{'--medium': block.layout.columnSpan === 6}"
-    ng-controller="Umbraco.PropertyEditors.BlockEditor.MediaBlockEditor as bc"
-    type="button"
-    ng-click="block.edit()"
-    ng-focus="block.focus">
+<button class="card"
+        ng-class="{'--medium': block.layout.columnSpan === 6}"
+        type="button"
+        ng-click="block.edit()"
+        ng-focus="block.focus">
+
+    {{mediaItem = (block.data.image[0].mediaKey | mediaItemResolver); ""}}
 
     <div class="card-media">
-        <img draggable="false" ng-if="bc.hasImage && (bc.isImage || bc.fileExtension === 'svg')" ng-src="{{bc.imageSource}}?width=720" alt="{{bc.mediaName}}" />
+        <img draggable="false" ng-if="mediaItem !== null" ng-src="{{mediaItem.mediaLink}}?wdth=720" alt="{{mediaItem.name}}" />
     </div>
     <div class="card-content">
         <h4>{{block.data.headline}}</h4>
