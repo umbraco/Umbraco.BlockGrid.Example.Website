@@ -31,5 +31,8 @@
 	<ItemGroup>
 		<ProjectReference Include="..\UmbracoBlockGrid\UmbracoBlockGrid.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="uSync\" />
+	</ItemGroup>
 
 </Project>
