@@ -5,9 +5,4 @@
     }
 </style>
 
-<div ng-switch="block.data.size[0]">
-    <h1 ng-switch-when="H1" ng-click="block.edit()" ng-focus="block.focus">{{block.data.headline}}</h1>
-    <h2 ng-switch-when="H2" ng-click="block.edit()" ng-focus="block.focus">{{block.data.headline}}</h2>
-    <h3 ng-switch-when="H3" ng-click="block.edit()" ng-focus="block.focus">{{block.data.headline}}</h3>
-    <h4 ng-switch-default ng-click="block.edit()" ng-focus="block.focus">{{block.data.headline}}</h4>
-</div>
+<h2 ng-click ="block.edit()" ng-focus="block.focus">{{block.data.headline}}</h2>
