@@ -7,6 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbracoBlockGrid.Site", "Um
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbracoBlockGrid", "UmbracoBlockGrid\UmbracoBlockGrid.csproj", "{E5473372-F10E-4704-A40D-29A3B6552878}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{F0F8FB0B-7A00-407A-A63E-721BD3C30D6F}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		umbraco-marketplace.json = umbraco-marketplace.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
