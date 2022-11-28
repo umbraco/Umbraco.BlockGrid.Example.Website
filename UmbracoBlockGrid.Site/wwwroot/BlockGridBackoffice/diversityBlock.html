@@ -12,7 +12,7 @@
     ng-click="block.edit()"
     ng-focus="block.focus"
     class="diversity"
-    ng-style="{'background-color': block.settingsData.backgroundColor}"
+    ng-style="{'background-color': '#' + block.settingsData.backgroundColor.value}"
 >
 
     <umb-block-grid-render-area-slots ng-click="$event.stopPropagation()"></umb-block-grid-render-area-slots>

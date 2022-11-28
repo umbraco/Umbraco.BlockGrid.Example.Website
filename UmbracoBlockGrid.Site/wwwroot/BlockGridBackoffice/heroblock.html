@@ -15,10 +15,7 @@
     class="hero"
     ng-click="block.edit()"
     ng-focus="block.focus"
-    ng-style="{
-        'background-color': block.data.backgroundColor
-    }"
-    >
+    ng-style="{'background-color': '#' + block.data.backgroundColor.value}">
 
     <div 
         class="hero-background"
