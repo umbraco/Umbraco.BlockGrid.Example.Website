@@ -1,0 +1,23 @@
+{
+    "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+
+    "Title": "Umbraco Block Grid Example Site",    
+    "AuthorDetails": {
+        "Name": "Umbraco HQ",
+        "Url": "https://umbraco.com",
+        "Contributors": [
+            {
+                "Name": "Niels Lyngsø",
+                "Url": "https://twitter.com/nielslyngsoe"
+            },        
+            {
+                "Name": "Warren Buckley",
+                "Url": "https://warrenbuckley.co.uk"
+            }
+        ]
+    },
+    "Category": "Themes & Starter Kits",
+    "LicenseTypes": ["Free"],
+    "PackageType": "Package",
+    "Tags": ["starterkit", "blockgrid", "grid"]    
+}
