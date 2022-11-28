@@ -1,11 +1,9 @@
-﻿@using Umbraco.Extensions
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<TwoColumnSection, SectionSettings>>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 
 @{
-    var settings = (ContentModels.SectionSettings)Model.Settings;
-    string? backgroundColor = settings.BackgroundColor;
-    bool noBackgroundColor = String.IsNullOrEmpty(backgroundColor);
+    var backgroundColor = Model.Settings.BackgroundColor;
+    var noBackgroundColor = String.IsNullOrEmpty(backgroundColor);
 }
 
 <section style="background-color:@backgroundColor" @(noBackgroundColor ? "nobackgroundcolor" : null)>

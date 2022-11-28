@@ -1,12 +1,12 @@
-﻿@using Umbraco.Extensions
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
-
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<ImageBlock>>
 @{
-    var typedMediaPickerSingle = Model.Content.Value<Umbraco.Cms.Core.Models.MediaWithCrops>("image");
-    if (typedMediaPickerSingle != null)
+    var image = Model.Content.Image;
+    if (image is not null)
     {
-        <img src="@typedMediaPickerSingle.MediaUrl()?wdth=1920" style="object-fit:cover; width:100%; height:100%;"/>
-    } else {
+        <img class="image" src="@image.GetCropUrl(width:1920)"/>
+    }
+    else
+    {
         <p>Missing image</p>
     }
 }

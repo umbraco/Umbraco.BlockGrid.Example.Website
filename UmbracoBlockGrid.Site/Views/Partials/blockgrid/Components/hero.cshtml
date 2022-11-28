@@ -1,24 +1,20 @@
-﻿@using Umbraco.Extensions
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
-
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<Hero>>
 @{
-    var backgroundColor = Model.Content.Value("backgroundColor");
-    var typedMediaPickerSingle = Model.Content.Value<Umbraco.Cms.Core.Models.MediaWithCrops>("image");
+    var backgroundColor = Model.Content.BackgroundColor;
+    var image = Model.Content.Image;
 }
 
-<div class="hero" style="background-color: @backgroundColor;">
-    @if (typedMediaPickerSingle != null){
-        <div class="hero-background" style="background-image: url(@typedMediaPickerSingle.MediaUrl()?width=3840)">
+<div class="hero" style="background-color:@backgroundColor">
+    @if (image is not null){
+        <div class="hero-background" style="background-image: url(@image.GetCropUrl(width:3840))">
         </div>
     }
     
     <div class="hero-content">
-        <h1>@Model.Content.Value("headline")</h1>
-        @{
-            /** Only render if there is some content... */
-            @if (Model.Areas.Any(a => a.Any())) {
-                @await Html.GetBlockGridItemAreasHtmlAsync(Model)
-            }
+        <h1>@Model.Content.Headline</h1>
+        @* Only render if there is some content... *@
+        @if (Model.Areas.Any(a => a.Any())) {
+            @await Html.GetBlockGridItemAreasHtmlAsync(Model)
         }
     </div>
 </div>
