@@ -1,11 +1,9 @@
-﻿@using Umbraco.Extensions
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<Diversity, SectionSettings>>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
-    var settings = (ContentModels.SectionSettings)Model.Settings;
-    var backgroundColor = settings.BackgroundColor;
+    var backgroundColor = Model.Settings.BackgroundColor;
 }
 
-<section class="diversity" style="background-color:@backgroundColor">
+<section class="diversity" style="background-color: @backgroundColor">
     @await Html.GetBlockGridItemAreasHtmlAsync(Model)
 </section>
