@@ -71,7 +71,7 @@
 
 <button type="button" ng-click="block.edit()" ng-focus="block.focus">
     {{mediaItem = (block.data.image[0].mediaKey | mediaItemResolver); ""}}
-    <img draggable="false" ng-if="mediaItem !== null && (mediaItem.mediaLink.indexOf('svg') === -1)" ng-src="{{mediaItem.mediaLink}}?wdth=1920" alt="{{mediaItem.name}}" />
+    <img draggable="false" ng-if="mediaItem !== null && (mediaItem.mediaLink.indexOf('svg') === -1)" ng-src="{{mediaItem.mediaLink}}?width=1920" alt="{{mediaItem.name}}" />
     <umb-icon ng-if="mediaItem !== null && (mediaItem.mediaLink.indexOf('svg') !== -1)" icon="{{mediaItem.contentType.icon}} color-black" class="icon"></umb-icon>
     <span ng-if="mediaItem !== null && mediaItem.name" class="file-name">{{mediaItem.name}}</span>
 </button>

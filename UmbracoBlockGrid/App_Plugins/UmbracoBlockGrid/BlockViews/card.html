@@ -22,7 +22,7 @@
     {{mediaItem = (block.data.image[0].mediaKey | mediaItemResolver); ""}}
 
     <div class="card-media">
-        <img draggable="false" ng-if="mediaItem !== null" ng-src="{{mediaItem.mediaLink}}?wdth=720" alt="{{mediaItem.name}}" />
+        <img draggable="false" ng-if="mediaItem !== null" ng-src="{{mediaItem.mediaLink}}?width=720" alt="{{mediaItem.name}}" />
     </div>
     <div class="card-content">
         <h4>{{block.data.headline}}</h4>
