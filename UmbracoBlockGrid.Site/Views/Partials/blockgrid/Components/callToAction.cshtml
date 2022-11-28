@@ -1,11 +1,14 @@
 ﻿@using Umbraco.Extensions
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
-    var href = Model.Content.Value<IPublishedContent>("link")?.Url();
-    if (href.IsNullOrWhiteSpace())
+    var content = (ContentModels.CallToAction)Model.Content;
+
+    var link = content.Link;
+    if (link is null)
     {
         return;
     }
 }
 
-<a class="call-to-action" href='@href' target="_self">@Model.Content.Value("label")</a>
+<a class="call-to-action" href="@link.Url" target="@link.Target">@link.Name</a>
