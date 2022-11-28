@@ -1,9 +1,0 @@
-﻿{
-  "name": "Umbraco Block Grid Example Website",
-  "version": "1.0.0",
-  "allowPackageTelemetry": true,
-  "javascript": [
-    "/App_Plugins/UmbracoBlockGrid/heroblock.editor.controller.js",
-    "/App_Plugins/UmbracoBlockGrid/mediablock.editor.controller.js"
-  ]
-}

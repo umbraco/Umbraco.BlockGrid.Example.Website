@@ -476,3 +476,4 @@ appsettings-schema.json
 
 # Media files
 #/wwwroot/media/
+UmbracoBlockGrid.Site/App_Plugins/UmbracoBlockGrid
