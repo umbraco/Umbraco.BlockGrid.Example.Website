@@ -15,6 +15,21 @@ cd UmbracoBlockGrid.Site
 dotnet run 
 ```
 
+### Using GitHub Codespaces
+You can work and contribute to this project using your FREE hours on GitHub Codespaces. This is a great way to get up and running quickly and contribute to the project.
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=569757441&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=WestEurope)
+
+
+The CodeSpace will have the following preinstalled or configured for you
+
+* Installed .NET 7 SDK
+* Done a Nuget restore
+* Installed SQLite and the supporting VSCode extension to browse, query and edit the database
+* SMTP4Dev installed and running to view emails sent out from the website with its web UI on port 5000
+* Debugging enabled for the website in the Run & Debug section
+
+
 ### Dependencies
 
 We are using the community package uSync from Kevin Jump in order to synchronize changes to document types and configuration, as the base product is free and open source for all to use.
