@@ -1,106 +1,152 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ContentTargetFolders>.</ContentTargetFolders>
-    <Product>UmbracoBlockGrid</Product>
-    <PackageId>UmbracoBlockGrid</PackageId>
-    <Title>Umbraco Block Grid Example Website</Title>
-    <Description>A simple Umbraco starter kit to show off the new Umbraco Block Grid editor</Description>
-    <PackageTags>umbraco;umbraco-marketplace;starter-kit;blockgrid;block-grid; </PackageTags>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ContentTargetFolders>.</ContentTargetFolders>
+		<Product>UmbracoBlockGrid</Product>
+		<PackageId>UmbracoBlockGrid</PackageId>
+		
+		<Description></Description>
+		<PackageTags>umbraco;umbraco-marketplace;starter-kit;blockgrid;block-grid;</PackageTags>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Umbraco.Cms.Web.Website" Version="11.0.0-rc5" />
-    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="11.0.0-rc5" />
-  </ItemGroup>
+	<PropertyGroup>
+		<Product>UmbracoBlockGrid</Product>
+		<PackageId>UmbracoBlockGrid</PackageId>
+		<Title>Umbraco Block Grid Example Website</Title>
+		<Description>A simple Umbraco starter kit to show off the new Umbraco Block Grid editor</Description>
+		<Company>Umbraco Community</Company>
+		<Authors>Umbraco HQ</Authors>		
+		<PackageProjectUrl>https://github.com/warrenbuckley/UmbracoBlockGrid</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/warrenbuckley/UmbracoBlockGrid</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageIcon>BlockGridDemoLogo.png</PackageIcon>
+		<PackageTags>Umbraco;StarterKit;Starter-Kit;BlockGrid;Block-Grid;</PackageTags>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>	
 
-  <ItemGroup>
-    <Content Include="App_Plugins\UmbracoBlockGrid\**" ExcludeFromSingleFile="true" CopyToPublishDirectory="Always" />
-    <None Include="buildTransitive\**" Pack="true" PackagePath="buildTransitive" />
-  </ItemGroup>
+	<PropertyGroup>
+		<!-- SourceLink: https://github.com/dotnet/sourcelink -->
+		<!-- Embed source files that are not tracked by the source control manager in the PDB -->
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 
-  <ItemGroup>
-    <Content Remove="App_Plugins\UmbracoBlockGrid\heroblock.editor.controller.js" />
-    <Content Remove="App_Plugins\UmbracoBlockGrid\mediablock.editor.controller.js" />
-  </ItemGroup>
+		<!-- SourceLink: Build symbol package (.snupkg) to distribute the PDB containing Source Link -->
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="App_Plugins\UmbracoBlockGrid\callToActionBlock.html" />
-    <None Remove="App_Plugins\UmbracoBlockGrid\cardBlock.html" />
-    <None Remove="App_Plugins\UmbracoBlockGrid\diversityBlock.html" />
-    <None Remove="App_Plugins\UmbracoBlockGrid\headlineBlock.html" />
-    <None Remove="App_Plugins\UmbracoBlockGrid\heroblock.html" />
-    <None Remove="App_Plugins\UmbracoBlockGrid\imageBlock.html" />
-    <None Remove="App_Plugins\UmbracoBlockGrid\oneColumnSectionBlock.html" />
-    <None Remove="App_Plugins\UmbracoBlockGrid\richTextBlock.html" />
-    <None Remove="App_Plugins\UmbracoBlockGrid\twoColumnSectionBlock.html" />
-    <None Remove="package.zip" />
-  </ItemGroup>
+	<!-- Deterministic Builds: https://github.com/clairernovotny/DeterministicBuilds -->
+	<PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="package.zip" />
-  </ItemGroup>
+	<ItemGroup>
+		<!-- Include files in package -->
+		<None Include="BlockGridDemoLogo.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Update="App_Plugins\UmbracoBlockGrid\BlockViews\callToAction.html">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Umbraco.Cms.Web.Website" Version="11.0.0-rc5" />
+		<PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="11.0.0-rc5" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Update="App_Plugins\UmbracoBlockGrid\BlockViews\card.html">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="App_Plugins\UmbracoBlockGrid\**" ExcludeFromSingleFile="true" CopyToPublishDirectory="Always" />
+		<None Include="buildTransitive\**" Pack="true" PackagePath="buildTransitive" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Update="App_Plugins\UmbracoBlockGrid\BlockViews\diversity.html">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
+	<ItemGroup>
+		<Content Remove="App_Plugins\UmbracoBlockGrid\heroblock.editor.controller.js" />
+		<Content Remove="App_Plugins\UmbracoBlockGrid\mediablock.editor.controller.js" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Update="App_Plugins\UmbracoBlockGrid\BlockViews\headlineBlock.html">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="App_Plugins\UmbracoBlockGrid\callToActionBlock.html" />
+		<None Remove="App_Plugins\UmbracoBlockGrid\cardBlock.html" />
+		<None Remove="App_Plugins\UmbracoBlockGrid\diversityBlock.html" />
+		<None Remove="App_Plugins\UmbracoBlockGrid\headlineBlock.html" />
+		<None Remove="App_Plugins\UmbracoBlockGrid\heroblock.html" />
+		<None Remove="App_Plugins\UmbracoBlockGrid\imageBlock.html" />
+		<None Remove="App_Plugins\UmbracoBlockGrid\oneColumnSectionBlock.html" />
+		<None Remove="App_Plugins\UmbracoBlockGrid\richTextBlock.html" />
+		<None Remove="App_Plugins\UmbracoBlockGrid\twoColumnSectionBlock.html" />
+		<None Remove="package.zip" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Update="App_Plugins\UmbracoBlockGrid\BlockViews\hero.html">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="package.zip" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Update="App_Plugins\UmbracoBlockGrid\BlockViews\imageBlock.html">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
+	<ItemGroup>
+		<Content Update="App_Plugins\UmbracoBlockGrid\BlockViews\callToAction.html">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Update="App_Plugins\UmbracoBlockGrid\BlockViews\oneColumnSection.html">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
+	<ItemGroup>
+		<Content Update="App_Plugins\UmbracoBlockGrid\BlockViews\card.html">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Update="App_Plugins\UmbracoBlockGrid\BlockViews\richTextBlock.html">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
+	<ItemGroup>
+		<Content Update="App_Plugins\UmbracoBlockGrid\BlockViews\diversity.html">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Update="App_Plugins\UmbracoBlockGrid\BlockViews\twoColumnSection.html">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
+	<ItemGroup>
+		<Content Update="App_Plugins\UmbracoBlockGrid\BlockViews\headlineBlock.html">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Update="App_Plugins\UmbracoBlockGrid\BlockViews\hero.html">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Update="App_Plugins\UmbracoBlockGrid\BlockViews\imageBlock.html">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Update="App_Plugins\UmbracoBlockGrid\BlockViews\oneColumnSection.html">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Update="App_Plugins\UmbracoBlockGrid\BlockViews\richTextBlock.html">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Update="App_Plugins\UmbracoBlockGrid\BlockViews\twoColumnSection.html">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
 </Project>

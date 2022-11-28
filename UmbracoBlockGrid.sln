@@ -9,8 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbracoBlockGrid", "Umbraco
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{F0F8FB0B-7A00-407A-A63E-721BD3C30D6F}"
 	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
 		README.md = README.md
 		umbraco-marketplace.json = umbraco-marketplace.json
+		version.json = version.json
 	EndProjectSection
 EndProject
 Global
