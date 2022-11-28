@@ -28,5 +28,6 @@
 			"protocol": "https",
 			"onAutoForward": "openBrowser"
 		}
-	}
+	},
+	"updateContentCommand": "dotnet restore"
 }
