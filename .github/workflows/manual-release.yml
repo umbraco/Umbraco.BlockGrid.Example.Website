@@ -28,11 +28,17 @@ jobs:
     
     #- name: Update NerdBank.GitVersioning file
     
-    - name: Tag Commit with version
-      run: git tag -a v${{ inputs.versionnumber }} -m "Releasing v${{ inputs.versionnumber }} from GitHub Actions"
-
-    - name: Push tagged version commit
-      run: git push origin v${{ inputs.versionnumber }}
+    - name: Tag Commit with Version
+      run: |
+        set -e
+          echo "Tag latest commit to ${{ inputs.versionnumber }}"
+          # Configure git
+          git config --global user.email github-actions@github.com
+          git config --global user.name github-actions
+          # Add / update and commit
+          git tag -a v${{ inputs.versionnumber }} -m "Releasing v${{ inputs.versionnumber }} from GitHub Actions"
+          # Push
+          git push origin v${{ inputs.versionnumber }} 
 
     #- name: Setup .NET
     #  uses: actions/setup-dotnet@v3
