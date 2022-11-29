@@ -15,11 +15,11 @@
 		<Title>Umbraco Block Grid Example Website</Title>
 		<Description>A simple Umbraco starter kit to show off the new Umbraco Block Grid editor</Description>
 		<Company>Umbraco Community</Company>
-		<Authors>Umbraco HQ</Authors>		
+		<Authors>Umbraco</Authors>		
 		<PackageProjectUrl>https://github.com/warrenbuckley/UmbracoBlockGrid</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/warrenbuckley/UmbracoBlockGrid</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<PackageIcon>BlockGridDemoLogo.png</PackageIcon>
+		<PackageIcon>UmbracoBlockGridDemoLogo.png</PackageIcon>
 		<PackageTags>Umbraco;StarterKit;Starter-Kit;BlockGrid;Block-Grid;</PackageTags>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>	
@@ -41,7 +41,7 @@
 
 	<ItemGroup>
 		<!-- Include files in package -->
-		<None Include="BlockGridDemoLogo.png">
+		<None Include="..\.github\readme-assets\UmbracoBlockGridDemoLogo.png">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
