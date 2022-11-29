@@ -31,7 +31,7 @@ jobs:
       run: dotnet build --no-restore
       
     - name: Pack
-      run: dotnet pack --no-build --configuration Release --output ./artifacts
+      run: dotnet pack --configuration Release --output ./artifacts
 
     - name: Publish to GitHub Packages
       uses: actions/upload-artifact@v2
