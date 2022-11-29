@@ -2,19 +2,14 @@
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
 		<ContentTargetFolders>.</ContentTargetFolders>
-		<Product>UmbracoBlockGrid</Product>
-		<PackageId>UmbracoBlockGrid</PackageId>
-		
-		<Description></Description>
-		<PackageTags>umbraco;umbraco-marketplace;starter-kit;blockgrid;block-grid;</PackageTags>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Product>UmbracoBlockGrid</Product>
-		<PackageId>UmbracoBlockGrid</PackageId>
+		<Product>Umbraco.BlockGrid.Example.Website</Product>
+		<PackageId>Umbraco.BlockGrid.Example.Website</PackageId>
 		<Title>Umbraco Block Grid Example Website</Title>
 		<Description>A simple Umbraco starter kit to show off the new Umbraco Block Grid editor</Description>
-		<Company>Umbraco Community</Company>
+		<Company>Umbraco HQ</Company>
 		<Authors>Umbraco</Authors>		
 		<PackageProjectUrl>https://github.com/warrenbuckley/UmbracoBlockGrid</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/warrenbuckley/UmbracoBlockGrid</RepositoryUrl>
