@@ -137,12 +137,9 @@ h4 {
     font-weight: 300;
     text-align: var(--my-text-align, left);
     color: var(--my-text-color, inherit);
+    columns: max(1, calc(var(--umb-block-grid--item-column-span) - 10));
+    column-gap: 60px;
 }
-
-    .rich-text.--two-columns {
-        columns: 2;
-        column-gap: 60px;
-    }
 
     .rich-text > p:first-child {
         margin-top: 0;
