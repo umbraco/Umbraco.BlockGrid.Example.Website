@@ -15,7 +15,7 @@
 		<RepositoryUrl>https://github.com/warrenbuckley/UmbracoBlockGrid</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageIcon>UmbracoBlockGridDemoLogo.png</PackageIcon>
-		<PackageTags>Umbraco;StarterKit;Starter-Kit;BlockGrid;Block-Grid;</PackageTags>
+		<PackageTags>Umbraco;StarterKit;Starter-Kit;BlockGrid;Block-Grid;umbraco-marketplace;</PackageTags>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>	
 
