@@ -3,7 +3,7 @@
     var image = Model.Content.Image;
     if (image is not null)
     {
-        <img class="image" src="@image.GetCropUrl(width:1920)"/>
+        <img class="image" src="@image.GetCropUrl(width:1920)" title="@image.Name" alt="@image.Name" />
     }
     else
     {
