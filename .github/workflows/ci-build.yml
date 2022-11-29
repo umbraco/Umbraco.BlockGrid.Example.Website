@@ -43,7 +43,7 @@ jobs:
     # If we are on the main branch (So PRs will not publish to it)
     - name: Add GitHub Nuget Feed
       if: github.ref == 'refs/heads/main'
-      run: dotnet nuget add source --username warrenbuckley --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/OWNER/index.json"
+      run: dotnet nuget add source --username umbraco --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/OWNER/index.json"
 
     - name: Push to GitHub Nuget Feed
       if: github.ref == 'refs/heads/main'
