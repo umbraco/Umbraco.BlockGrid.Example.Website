@@ -4,7 +4,7 @@
     var image = Model.Content.Image;
 }
 
-<div class="hero" style="background-color:@backgroundColor">
+<div class="hero" style="background-color:#@backgroundColor">
     @if (image is not null){
         <div class="hero-background" style="background-image: url(@image.GetCropUrl(width:3840))">
         </div>

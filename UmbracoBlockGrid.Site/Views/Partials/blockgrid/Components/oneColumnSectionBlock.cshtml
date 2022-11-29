@@ -5,6 +5,6 @@
     var noBackgroundColor = string.IsNullOrEmpty(backgroundColor);
 }
 
-<section class="one-column" style="background-color:@backgroundColor" @(noBackgroundColor ? "nobackgroundcolor" : null)>
+<section class="one-column" style="background-color:#@backgroundColor" @(noBackgroundColor ? "nobackgroundcolor" : null)>
     @await Html.GetBlockGridItemAreasHtmlAsync(Model)
 </section>
