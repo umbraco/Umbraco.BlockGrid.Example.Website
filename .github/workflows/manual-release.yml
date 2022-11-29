@@ -26,8 +26,13 @@ jobs:
       env:
         VERSIONNUMBER: ${{ inputs.versionnumber }}
     
-    #- name: Update NerdBank.GitVersioning file
+    - name: Install NerdBank.GitVersioning dotnet global tool
+      id: gitversion
+      uses: dotnet/nbgv@v0.4.0
     
+    - name: Run nbgv set-version
+      run: nbgv set-version ${{ inputs.versionnumber }}
+
     - name: Tag Commit with Version
       run: |
         set -e
@@ -35,10 +40,19 @@ jobs:
           # Configure git
           git config --global user.email github-actions@github.com
           git config --global user.name github-actions
-          # Add / update and commit
+          # Add tag commit
           git tag -a v${{ inputs.versionnumber }} -m "Releasing v${{ inputs.versionnumber }} from GitHub Actions"
           # Push
           git push origin v${{ inputs.versionnumber }} 
+
+    - name: Tag Commit with Version ${{ inputs.versionnumber }}
+      run: |
+        set -e
+          echo "Bump/Update version.json to ${{ inputs.versionnumber }}"
+          # Git Add
+          git add version.json
+          git commit -m "Bump version to v${{ inputs.versionnumber }} [skip ci]"
+          git push origin          
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
@@ -60,10 +74,7 @@ jobs:
         name: Nuget Package
         path: ./artifacts/
 
-    ## Will only publish to Nuget feed
-    ## If we are on the main branch (So PRs will not publish to it)   
     #- name: Push to Nuget Feed
-    #  if: github.ref == 'refs/heads/main'
     #  run: dotnet nuget push .\artifacts\* --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
 
     - name: Create GitHub Release
@@ -75,5 +86,17 @@ jobs:
         files: |
           ./artifacts/*.nupkg
           ./artifacts/*.snupkg
+
+    - name: Run nbgv set-version to append beta
+      run: nbgv set-version ${{ inputs.versionnumber }}-beta
+
+    - name: Tag Commit with Version ${{ inputs.versionnumber }}-beta
+      run: |
+        set -e
+          echo "Bump/Update version.json to ${{ inputs.versionnumber }}-beta"
+          # Git Add
+          git add version.json
+          git commit -m "Bump version to v${{ inputs.versionnumber }}-beta [skip ci]"
+          git push origin
 
     
