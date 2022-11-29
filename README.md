@@ -7,6 +7,13 @@ An example of Umbraco Block Grid as a simple installable starter kit. This packa
 > **Note** 
 > This requires .NET7+ and Umbraco 11.0.0+
 
+## Installing
+To install the Umbraco Block Grid Example site you need a minimum of Umbraco 11.0.0 RC5 or newer and then to add the following Nuget package to your project containg the Umbraco website.
+
+```
+dotnet add package Umbraco.BlockGrid.Example.Website
+```
+
 ## Contributing
 This package is open to be collobrated on with the wider Umbraco community.
 
