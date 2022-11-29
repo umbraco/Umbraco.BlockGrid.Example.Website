@@ -52,7 +52,7 @@ jobs:
           # Git Add
           git add version.json
           git commit -m "Bump version to v${{ inputs.versionnumber }} [skip ci]"
-          git push origin          
+          git push origin        
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
@@ -74,14 +74,14 @@ jobs:
         name: Nuget Package
         path: ./artifacts/
 
-    #- name: Push to Nuget Feed
-    #  run: dotnet nuget push .\artifacts\* --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+    - name: Push to Nuget Feed
+      run: dotnet nuget push ./artifacts/* --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
       with:
         tag_name: v${{ inputs.versionnumber }}
-        draft: true
+        draft: false
         generate_release_notes: true
         files: |
           ./artifacts/*.nupkg

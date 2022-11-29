@@ -39,12 +39,8 @@ jobs:
         name: Nuget Package
         path: ./artifacts/
 
-    # Will only publish to GitHub hosted Nuget feed
-    # If we are on the main branch (So PRs will not publish to it)
-    - name: Add GitHub Nuget Feed
+    # Will only publish to Nuget feed
+    # If we are on the main branch (So PRs will not publish to it)   
+    - name: Push to Nuget Feed
       if: github.ref == 'refs/heads/main'
-      run: dotnet nuget add source --username umbraco --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/umbraco/index.json"
-
-    - name: Push to GitHub Nuget Feed
-      if: github.ref == 'refs/heads/main'
-      run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source github
+      run: dotnet nuget push ./artifacts/* --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
