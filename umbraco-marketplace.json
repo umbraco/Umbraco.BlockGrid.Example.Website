@@ -1,23 +1,27 @@
 {
-    "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+  "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
 
-    "Title": "Umbraco Block Grid Example Site",    
-    "AuthorDetails": {
-        "Name": "Umbraco HQ",
-        "Url": "https://umbraco.com",
-        "Contributors": [
-            {
-                "Name": "Niels Lyngsø",
-                "Url": "https://twitter.com/nielslyngsoe"
-            },        
-            {
-                "Name": "Warren Buckley",
-                "Url": "https://warrenbuckley.co.uk"
-            }
-        ]
-    },
-    "Category": "Themes & Starter Kits",
-    "LicenseTypes": ["Free"],
-    "PackageType": "Package",
-    "Tags": ["starterkit", "blockgrid", "grid"]    
+  "Title": "Umbraco Block Grid Example Site",
+  "AuthorDetails": {
+    "Name": "Umbraco HQ",
+    "Url": "https://umbraco.com",
+    "Contributors": [
+      {
+        "Name": "Niels Lyngsø",
+        "Url": "https://github.com/nielslyngsoe"
+      },
+      {
+        "Name": "Warren Buckley",
+        "Url": "https://github.com/warrenbuckley"
+      },
+      {
+        "Name": "Kenn Jacobsen",
+        "Url": "https://github.com/kjac"
+      }
+    ]
+  },
+  "Category": "Themes & Starter Kits",
+  "LicenseTypes": [ "Free" ],
+  "PackageType": "Package",
+  "Tags": [ "starterkit", "blockgrid", "grid" ]
 }
