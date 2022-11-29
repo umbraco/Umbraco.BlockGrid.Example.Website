@@ -1,0 +1,73 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: Manual Release
+
+on:
+  workflow_dispatch:
+    inputs:
+        versionnumber:
+            description: 'The version number to release (eg: 2.1.0)'
+            required: true
+            default: ''
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Display Version Number set 
+      run: |
+          echo "Log level: $VERSIONNUMBER"
+      env:
+        VERSIONNUMBER: ${{ inputs.versionnumber }}
+    
+    #- name: Update NerdBank.GitVersioning file
+    
+    - name: Tag Commit with version
+      run: git tag -a v${{ inputs.versionnumber }} -m "Releasing v${{ inputs.versionnumber }} from GitHub Actions"
+
+    - name: Push tagged version commit
+      run: git push origin v${{ inputs.versionnumber }}
+
+    #- name: Setup .NET
+    #  uses: actions/setup-dotnet@v3
+    #  with:
+    #    dotnet-version: 7.0.x
+        
+    #- name: Restore dependencies
+    #  run: dotnet restore
+      
+    #- name: Build
+    #  run: dotnet build --no-restore
+      
+    #- name: Pack
+    #  run: dotnet pack --configuration Release --output ./artifacts
+
+    #- name: Publish Artifacts to Action Run
+    #  uses: actions/upload-artifact@v2
+    #  with:
+    #    name: Nuget Package
+    #    path: ./artifacts/
+
+    ## Will only publish to Nuget feed
+    ## If we are on the main branch (So PRs will not publish to it)   
+    #- name: Push to Nuget Feed
+    #  if: github.ref == 'refs/heads/main'
+    #  run: dotnet nuget push .\artifacts\* --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+
+    #- name: Create GitHub Release
+    #  uses: softprops/action-gh-release@v1
+    #  if: startsWith(github.ref, 'refs/tags/')
+    #  with:
+    #    draft: true
+    #    generate_release_notes: true
+    #    files: |
+    #      ./artifacts/*.nupkg
+    #      ./artifacts/*.snupkg
+
+    
