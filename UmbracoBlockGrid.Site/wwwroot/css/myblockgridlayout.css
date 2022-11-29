@@ -304,3 +304,36 @@ p.lead-paragraph {
             .card.--medium .card-content h4 {
                 font-size: 30px;
             }
+
+/** Image */
+
+img.image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+/**umb_name:H3*/
+h3 {
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 0;
+    text-align: var(--my-text-align, left);
+    color: var(--my-text-color, inherit);
+}
+
+/**umb_name:H4*/
+h4 {
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 0;
+    text-align: var(--my-text-align, left);
+    color: var(--my-text-color, inherit);
+}
+
+/**umb_name:Lead Paragraph*/
+p.lead-paragraph {
+    font-size: 18px;
+}
