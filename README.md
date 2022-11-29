@@ -1,6 +1,6 @@
 # Umbraco Block Grid Example Website
 
-<img src="../.github/readme-assets/UmbracoBlockGridDemoLogo.png" alt="Umbraco Block Grid Example Website" height="130" align="right">
+<img src=".github/readme-assets/UmbracoBlockGridDemoLogo.png" alt="Umbraco Block Grid Example Website" height="150" align="right">
 
 An example of Umbraco Block Grid as a simple installable starter kit. This package is to help showcase what can be achieved with the new block grid editor in Umbraco.
 
