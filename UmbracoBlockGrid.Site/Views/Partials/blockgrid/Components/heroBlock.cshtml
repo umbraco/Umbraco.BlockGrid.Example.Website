@@ -2,10 +2,15 @@
 @{
     var backgroundColor = Model.Content.BackgroundColor;
     var image = Model.Content.Image;
+    var hasBrightContrast = Model.Content.Contrast == "ffffff";
 }
 
-<div class="hero" style="background-color:#@backgroundColor">
-    @if (image is not null){
+<div 
+    class="hero"
+    style="background-color:#@backgroundColor"
+    @(hasBrightContrast ? "bright-contrast" : null)>
+
+    @if (image is not null) {
         <div class="hero-background" style="background-image: url(@image.GetCropUrl(width:3840))">
         </div>
     }

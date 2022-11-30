@@ -58,6 +58,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string BackgroundColor => this.Value<string>(_publishedValueFallback, "backgroundColor");
 
 		///<summary>
+		/// Contrast
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "11.0.0-rc5+dc1b10f")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("contrast")]
+		public virtual string Contrast => this.Value<string>(_publishedValueFallback, "contrast");
+
+		///<summary>
 		/// Headline
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "11.0.0-rc5+dc1b10f")]

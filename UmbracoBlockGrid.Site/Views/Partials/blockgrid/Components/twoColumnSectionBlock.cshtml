@@ -4,8 +4,12 @@
 @{
     var backgroundColor = Model.Settings.BackgroundColor;
     var noBackgroundColor = String.IsNullOrEmpty(backgroundColor);
+    var hasBrightContrast = Model.Settings.Contrast == "ffffff";
 }
 
-<section style="background-color: #@backgroundColor" @(noBackgroundColor ? "nobackgroundcolor" : null)>
+<section
+    style="background-color: #@backgroundColor"
+    @(noBackgroundColor ? "nobackgroundcolor" : null)
+    @(hasBrightContrast ? "bright-contrast" : null)>
     @await Html.GetBlockGridItemAreasHtmlAsync(Model)
 </section>

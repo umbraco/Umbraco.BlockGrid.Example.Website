@@ -28,6 +28,9 @@
 
 .umb-block-grid__area {
     position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     /* For small devices we scale columnSpan by three, to make everything bigger than 1/3 take full width: */
     grid-column-end: span min(calc(var(--umb-block-grid--area-column-span, 1) * 3), var(--umb-block-grid--grid-columns));
     grid-row: span var(--umb-block-grid--area-row-span, 1);
@@ -49,10 +52,10 @@
 
 /* additional CSS options for area-container and areas: */
 .umb-block-grid__area-container, .umb-block-grid__block--view::part(area-container) {
-    max-width: 1200px;
+    max-width: var(--my-container-max-width);
+    padding: var(--my-container-padding);
     margin-left: auto;
     margin-right: auto;
-    /*column-gap: 60px;*/
     --umb-block-grid--areas-column-gap: 60px;
     --umb-block-grid--areas-row-gap: 60px;
 }
@@ -80,8 +83,23 @@
     margin: 0;
 }
 
+.umb-block-grid {
+    container-type: inline-size;
+    --my-container-max-width: 1200px;
+    --my-container-padding: 0 20px;
+}
+@container (min-width: 720px) {
+    .umb-block-grid__layout-container {
+        --my-container-padding: 0 60px;
+    }
+}
+
 section {
     padding: var(--section-padding, 60px 0);
+}
+section[bright-contrast] {
+    color:white;
+    --my-bright-contrast: ;
 }
 
 
@@ -97,8 +115,7 @@ h1 {
     line-height: 0.96;
     margin: 0;
     margin-bottom: 20px;
-    text-align: var(--my-text-align, left);
-    color: var(--my-text-color, inherit);
+    color: inherit;
 }
 
 h2 {
@@ -106,8 +123,7 @@ h2 {
     font-weight: 300;
     line-height: 1.2;
     margin: 0;
-    text-align: var(--my-text-align, left);
-    color: var(--my-text-color, inherit);
+    color: inherit;
 }
 
 /**umb_name:H3*/
@@ -116,8 +132,7 @@ h3 {
 	font-weight: 300;
 	line-height: 1.2;
 	margin:0;
-	text-align: var(--my-text-align, left);
-	color: var(--my-text-color, inherit);
+	color: inherit;
 }
 
 /**umb_name:H4*/
@@ -126,24 +141,38 @@ h4 {
 	font-weight: 300;
 	line-height: 1.2;
 	margin:0;
-	text-align: var(--my-text-align, left);
-	color: var(--my-text-color, inherit);
+	color: inherit;
 }
+
+
+
+
+
+/** Image */
+
+img.image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+
+
 
 
 /** Rich Text */
 
 .rich-text {
     font-weight: 300;
-    text-align: var(--my-text-align, left);
-    color: var(--my-text-color, inherit);
-    columns: max(1, calc(var(--umb-block-grid--item-column-span) - 10));
+    color: inherit;
+    /** Using CSS Calculation, which gives 1 for column spans of 1-11 and 2 for column span of 12. */
+    columns: clamp(1, calc(var(--umb-block-grid--item-column-span) - 10), 2);
     column-gap: 60px;
 }
 
-    .rich-text > p:first-child {
-        margin-top: 0;
-    }
+.rich-text > p:first-child {
+    margin-top: 0;
+}
 
 /**umb_name:Lead Paragraph*/
 p.lead-paragraph {
@@ -155,6 +184,11 @@ p.lead-paragraph {
 
 /** Hero */
 
+.umb-block-grid__layout-item[data-content-element-type-alias="heroBlock"] .umb-block-grid__area-container, 
+.umb-block-grid__layout-item[data-content-element-type-alias="heroBlock"] .umb-block-grid__block--view::part(area-container) {
+    padding: 0;
+}
+
 .hero {
     position: relative;
     height: 80vh;
@@ -163,38 +197,39 @@ p.lead-paragraph {
     align-items: end;
     padding: 60px 0;
     box-sizing: border-box;
-    --my-text-color: white;
-    --button-background-color: white;
-    --button-text-color: #1b264f;
+}
+.hero[bright-contrast] {
+    color: white;
+    --my-bright-contrast: ;
 }
 
-    .hero .hero-background {
-        position: absolute;
-        inset: 0;
-        background-position: 50% 50%;
-        background-size: cover;
-    }
+.hero .hero-background {
+    position: absolute;
+    inset: 0;
+    background-position: 50% 50%;
+    background-size: cover;
+}
 
-        .hero .hero-background:after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-color: rgba(0,0,0,.22);
-            pointer-events: none;
-        }
+.hero .hero-background:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0,0,0,.22);
+    pointer-events: none;
+}
 
-    .hero .hero-content {
-        position: relative;
-        width: 100%;
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+.hero .hero-content {
+    position: relative;
+    width: 100%;
+    max-width: var(--my-container-max-width);
+    padding: var(--my-container-padding);
+    margin-left: auto;
+    margin-right: auto;
+}
 
-        .hero .hero-content > h1 {
-            max-width: 14em;
-            ;
-        }
+.hero .hero-content > h1 {
+    max-width: 14em;
+}
 
 
 
@@ -203,8 +238,10 @@ p.lead-paragraph {
 
 .call-to-action {
     display: inline-block;
-    background-color: var(--button-background-color, #3544b1);
-    color: var(--button-text-color, white);
+    --call-to-action--background-color--condition: var(--my-bright-contrast) white;
+    background-color: var(--call-to-action--background-color--condition, #3544b1);
+    --call-to-action--text-color--condition: var(--my-bright-contrast) black;
+    color: var(--call-to-action--text-color--condition, white);
     font-weight: 500;
     padding: 14px 28px;
     margin-top: 10px;
@@ -216,28 +253,49 @@ p.lead-paragraph {
 
 
 
-/** Diversity */
-.diversity .area-container {
-    max-width: 1200px;
+/** Inspiration */
+
+.inspiration[bright-contrast] {
+    --my-bright-contrast: ;
+}
+
+.inspiration .area-container {
+    max-width: var(--my-container-max-width);
+    padding: var(--my-container-padding);
     margin-left: auto;
     margin-right: auto;
-    display: flex;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-flow: row;
+    column-gap: 60px;
 }
 
-.diversity .left-area {
+.inspiration .left-area {
+    grid-column-end: span 1;
     display: block;
-    width: 25%;
+    margin-bottom: 60px;
 }
 
-.diversity .right-area {
+.inspiration .right-area {
+    grid-column-end: span 1;
     display: block;
-    width: 25%;
-    transform: translate(-10%, 10%);
+    margin-top: 60px;
+    margin-right: -120px;
+    transform: translateX(-120px);
 }
 
-.diversity .content-area {
+.inspiration .content-area {
+    grid-column-end: span 2;
     display: block;
-    width: 50%;
+}
+
+.umb-block-grid__layout-item[data-content-element-type-alias="inspirationBlock"] .umb-block-grid__area[data-area-alias="leftArea"] {
+    justify-content: start;
+}
+
+.umb-block-grid__layout-item[data-content-element-type-alias="inspirationBlock"] .umb-block-grid__area[data-area-alias="rightArea"] {
+    justify-content: end;
 }
 
 
@@ -256,84 +314,51 @@ p.lead-paragraph {
     background-color: white;
 }
 
-    .card .card-media {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        overflow: hidden;
-    }
+.card .card-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
 
-        .card .card-media img {
-            object-fit: cover;
-            height: 100%;
-            width: 100%;
-        }
-
-    .card .card-content {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        padding: 20px;
-        font-weight: 300;
-    }
-
-        .card .card-content p {
-            margin: 0;
-        }
-
-
-    .card.--medium {
-        height: auto;
-    }
-
-        .card.--medium .card-media::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-color: rgba(0,0,0,.22);
-            pointer-events: none;
-        }
-
-        .card.--medium .card-content {
-            position: absolute;
-            z-index: 1;
-            bottom: 0;
-            color: white;
-        }
-
-            .card.--medium .card-content h4 {
-                font-size: 30px;
-            }
-
-/** Image */
-
-img.image {
+.card .card-media img {
     object-fit: cover;
     height: 100%;
     width: 100%;
 }
 
-/**umb_name:H3*/
-h3 {
+.card .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    font-weight: 300;
+}
+
+.card .card-content p {
+    margin: 0;
+}
+
+
+.card.--medium {
+    height: auto;
+}
+
+.card.--medium .card-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0,0,0,.22);
+    pointer-events: none;
+}
+
+.card.--medium .card-content {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    color: white;
+}
+
+.card.--medium .card-content h4 {
     font-size: 30px;
-    font-weight: 300;
-    line-height: 1.2;
-    margin: 0;
-    text-align: var(--my-text-align, left);
-    color: var(--my-text-color, inherit);
-}
-
-/**umb_name:H4*/
-h4 {
-    font-size: 21px;
-    font-weight: 300;
-    line-height: 1.2;
-    margin: 0;
-    text-align: var(--my-text-align, left);
-    color: var(--my-text-color, inherit);
-}
-
-/**umb_name:Lead Paragraph*/
-p.lead-paragraph {
-    font-size: 18px;
 }
