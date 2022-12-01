@@ -15,7 +15,8 @@
     class="hero"
     ng-click="block.edit()"
     ng-focus="block.focus"
-    ng-style="{'background-color': '#' + block.data.backgroundColor.value}">
+    ng-style="{'background-color': '#' + block.data.backgroundColor.value}"
+    ng-attr-bright-contrast="{{block.data.contrast.value === 'ffffff' || undefined}}">
 
     <div 
         class="hero-background"
