@@ -33,7 +33,7 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration Release --output ./artifacts
 
-    - name: Publish to GitHub Packages
+    - name: Publish Nuget Artifacts to Action Run
       uses: actions/upload-artifact@v2
       with:
         name: Nuget Package
