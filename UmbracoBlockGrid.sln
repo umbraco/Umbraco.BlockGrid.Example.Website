@@ -19,6 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHubActions", "GitHubActi
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\ci-build.yml = .github\workflows\ci-build.yml
 		.github\workflows\codeql.yml = .github\workflows\codeql.yml
+		.github\workflows\manual-release.yml = .github\workflows\manual-release.yml
 	EndProjectSection
 EndProject
 Global
