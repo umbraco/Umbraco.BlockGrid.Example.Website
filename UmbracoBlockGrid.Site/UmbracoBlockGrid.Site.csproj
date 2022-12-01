@@ -28,7 +28,7 @@
     <RazorCompileOnPublish>false</RazorCompileOnPublish>
   </PropertyGroup>
 
-	<Import Project="..\UmbracoBlockGrid\buildTransitive\UmbracoBlockGrid.targets" />
+	<Import Project="..\UmbracoBlockGrid\buildTransitive\Umbraco.BlockGrid.Example.Website.targets" />
 	<ItemGroup>
 		<ProjectReference Include="..\UmbracoBlockGrid\UmbracoBlockGrid.csproj" />
 	</ItemGroup>
