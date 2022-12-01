@@ -43,4 +43,4 @@ jobs:
     # If we are on the main branch (So PRs will not publish to it)   
     - name: Push to Nuget Feed
       if: github.ref == 'refs/heads/main'
-      run: dotnet nuget push ./artifacts/* --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+      run: dotnet nuget push ./artifacts/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
