@@ -1,6 +1,6 @@
 # Umbraco Block Grid Example Website
 
-<img src=".github/readme-assets/UmbracoBlockGridDemoLogo.png" alt="Umbraco Block Grid Example Website" height="150" align="right">
+<img src="https://raw.githubusercontent.com/umbraco/Umbraco.BlockGrid.Example.Website/main/.github/readme-assets/UmbracoBlockGridDemoLogo.png" alt="Umbraco Block Grid Example Website" height="150" align="right">
 
 An example of Umbraco Block Grid as a simple installable starter kit. This package is to help showcase what can be achieved with the new block grid editor in Umbraco.
 
@@ -31,10 +31,10 @@ dotnet run --project "BlockGridPlayground"
 
 
 ### Umbraco Block Grid Website
-![Umbraco BlockGrid](.github/readme-assets/blockgrid-screenshot.jpg)
+![Umbraco BlockGrid](https://raw.githubusercontent.com/umbraco/Umbraco.BlockGrid.Example.Website/main/.github/readme-assets/blockgrid-screenshot.jpg)
 
 ### Umbraco Backoffice Block Grid
-![Umbraco BlockGrid Backoffice](.github/readme-assets/blockgrid-umbraco-screenshot.jpg)
+![Umbraco BlockGrid Backoffice](https://raw.githubusercontent.com/umbraco/Umbraco.BlockGrid.Example.Website/main/.github/readme-assets/blockgrid-umbraco-screenshot.jpg)
 
 
 ## Contributing
