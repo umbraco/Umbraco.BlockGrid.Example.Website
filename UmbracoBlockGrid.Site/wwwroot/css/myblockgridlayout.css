@@ -42,12 +42,24 @@
     }
 
     .umb-block-grid__area {
-        grid-column-end: span var(--umb-block-grid--area-column-span, 1);
+        grid-column-end: span min(var(--umb-block-grid--area-column-span, 1), var(--umb-block-grid--area-grid-columns));
     }
 }
 
 
+
 /**** Custom additions to the default Grid Layout Stylehseet: ****/
+
+.umb-block-grid {
+    container-type: inline-size;
+    --my-container-max-width: 1200px;
+    --my-container-padding: 0 20px;
+}
+@container (min-width: 720px) {
+    .umb-block-grid__layout-container {
+        --my-container-padding: 0 60px;
+    }
+}
 
 
 /* additional CSS options for area-container and areas: */
@@ -56,17 +68,33 @@
     padding: var(--my-container-padding);
     margin-left: auto;
     margin-right: auto;
-    --umb-block-grid--areas-column-gap: 60px;
-    --umb-block-grid--areas-row-gap: 60px;
+
+    /* We add gap for Areas in general: */
+    --umb-block-grid--areas-column-gap: 20px;
+    --umb-block-grid--areas-row-gap: 20px;
+}
+
+@container (min-width: 720px) {
+    .umb-block-grid__area-container, .umb-block-grid__block--view::part(area-container) {
+        --umb-block-grid--areas-column-gap: 60px;
+        --umb-block-grid--areas-row-gap: 60px;
+    }
 }
 
 .umb-block-grid__area {
     justify-content: center;
 }
 
+/** Specificly for oneColumnSectionBlock we add block colum-gap/row-gap. Notice this is different from the Area Gaps added above. */
 .umb-block-grid__layout-item[data-content-element-type-alias="oneColumnSectionBlock"] .umb-block-grid__layout-container {
-    --umb-block-grid--column-gap: 60px;
-    --umb-block-grid--row-gap: 60px;
+    --umb-block-grid--column-gap: 20px;
+    --umb-block-grid--row-gap: 20px;
+}
+@container (min-width: 720px) {
+    .umb-block-grid__layout-item[data-content-element-type-alias="oneColumnSectionBlock"] .umb-block-grid__layout-container {
+        --umb-block-grid--column-gap: 60px;
+        --umb-block-grid--row-gap: 60px;
+    }
 }
 
 
@@ -83,16 +111,6 @@
     margin: 0;
 }
 
-.umb-block-grid {
-    container-type: inline-size;
-    --my-container-max-width: 1200px;
-    --my-container-padding: 0 20px;
-}
-@container (min-width: 720px) {
-    .umb-block-grid__layout-container {
-        --my-container-padding: 0 60px;
-    }
-}
 
 section {
     padding: var(--section-padding, 60px 0);
@@ -165,9 +183,14 @@ img.image {
 .rich-text {
     font-weight: 300;
     color: inherit;
-    /** Using CSS Calculation, which gives 1 for column spans of 1-11 and 2 for column span of 12. */
-    columns: clamp(1, calc(var(--umb-block-grid--item-column-span) - 10), 2);
-    column-gap: 60px;
+}
+
+@media (min-width:1024px) {
+    .rich-text {
+        /** Using CSS Calculation, which gives 1 for column spans of 1-11 and 2 for column span of 12. */
+        columns: clamp(1, calc(var(--umb-block-grid--item-column-span) - 10), 2);
+        column-gap: 60px;
+    }
 }
 
 .rich-text > p:first-child {
