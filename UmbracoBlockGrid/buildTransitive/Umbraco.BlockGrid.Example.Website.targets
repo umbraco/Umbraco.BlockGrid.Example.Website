@@ -1,0 +1,21 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <UmbracoBlockGridContentFilesPath>$(MSBuildThisFileDirectory)..\App_Plugins\UmbracoBlockGrid\**\*.*</UmbracoBlockGridContentFilesPath>
+  </PropertyGroup>
+
+  <Target Name="CopyUmbracoBlockGridAssets" BeforeTargets="Build">
+    <ItemGroup>
+      <UmbracoBlockGridContentFiles Include="$(UmbracoBlockGridContentFilesPath)" />
+    </ItemGroup>
+    <Message Text="Copying UmbracoBlockGrid files: $(UmbracoBlockGridContentFilesPath) - #@(UmbracoBlockGridContentFiles->Count()) files" Importance="high" />
+    <Copy SourceFiles="@(UmbracoBlockGridContentFiles)" DestinationFiles="@(UmbracoBlockGridContentFiles->'$(MSBuildProjectDirectory)\App_Plugins\UmbracoBlockGrid\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+  </Target>
+
+  <Target Name="ClearUmbracoBlockGridAssets" BeforeTargets="Clean">
+    <ItemGroup>
+      <UmbracoBlockGridDir Include="$(MSBuildProjectDirectory)\App_Plugins\UmbracoBlockGrid\" />
+    </ItemGroup>
+    <Message Text="Clear old UmbracoBlockGrid data" Importance="high" />
+    <RemoveDir Directories="@(UmbracoBlockGridDir)" />
+  </Target>
+</Project>

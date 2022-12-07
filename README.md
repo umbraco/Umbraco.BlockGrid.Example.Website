@@ -14,6 +14,29 @@ To install the Umbraco Block Grid Example site you need a minimum of Umbraco 11.
 dotnet add package Umbraco.BlockGrid.Example.Website
 ```
 
+Alternatively here are some commands to get you up and runing with Umbraco 11 with a backoffice user preconfigured for you or you [can alternatively configure it more with Paul Seal's Package Script Writer website](https://psw.codeshare.co.uk/?InstallUmbracoTemplate=true&UmbracoTemplateVersion=&Packages=&UserEmail=warren%40umbraco.com&ProjectName=UmbracoBlockGrid.Site&CreateSolutionFile=true&SolutionName=UmbracoBlockGrid&UseUnattendedInstall=true&DatabaseType=SQLite&UserPassword=password1234&UserFriendlyName=Warren+Buckley&IncludeStarterKit=false&StarterKitPackage=clean&OnelinerOutput=false)
+
+```bash
+# Ensure we have the latest Umbraco templates
+dotnet new -i Umbraco.Templates
+
+dotnet new umbraco --force -n "BlockGridPlayground" --friendly-name "Administrator" --email "admin@example.com" --password "1234567890" --development-database-type SQLite
+
+#Add starter kit
+dotnet add "BlockGridPlayground" package Umbraco.BlockGrid.Example.Website
+
+dotnet run --project "BlockGridPlayground"
+#Running
+```
+
+
+### Umbraco Block Grid Website
+![Umbraco BlockGrid](.github/readme-assets/blockgrid-screenshot.jpg)
+
+### Umbraco Backoffice Block Grid
+![Umbraco BlockGrid Backoffice](.github/readme-assets/blockgrid-umbraco-screenshot.jpg)
+
+
 ## Contributing
 This package is open to be collobrated on with the wider Umbraco community.
 

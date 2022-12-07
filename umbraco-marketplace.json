@@ -23,5 +23,16 @@
   "Category": "Themes & Starter Kits",
   "LicenseTypes": [ "Free" ],
   "PackageType": "Package",
-  "Tags": [ "starterkit", "blockgrid", "grid" ]
+  "Tags": [ "starterkit", "blockgrid", "grid" ],
+  "IssueTrackerUrl": "https://github.com/umbraco/Umbraco.BlockGrid.Example.Website/issues",
+  "Screenshots": [
+    {
+      "ImageUrl": "https://raw.githubusercontent.com/umbraco/Umbraco.BlockGrid.Example.Website/main/.github/readme-assets/blockgrid-screenshot.jpg",
+      "Caption": "Umbraco BlockGrid Website"
+    },
+    {
+      "ImageUrl": "https://raw.githubusercontent.com/umbraco/Umbraco.BlockGrid.Example.Website/main/.github/readme-assets/blockgrid-umbraco-screenshot.jpg",
+      "Caption": "Umbraco BlockGrid inside Umbraco backoffice"
+    }
+  ]
 }

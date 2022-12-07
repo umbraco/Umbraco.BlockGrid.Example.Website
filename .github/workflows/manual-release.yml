@@ -75,7 +75,7 @@ jobs:
         path: ./artifacts/
 
     - name: Push to Nuget Feed
-      run: dotnet nuget push ./artifacts/* --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+      run: dotnet nuget push ./artifacts/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
